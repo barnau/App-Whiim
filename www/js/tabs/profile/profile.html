@@ -2,15 +2,20 @@
     <ion-content padding="true" class="manual-ios-statusbar-padding">
         <h1 id="profilePage-heading3" style="color:#000000;text-align:center;">PROFILE PAGE</h1>
         <div>
-            <img src="img/ZKZDW6hSje8hRQsECoKw_michelekforwhiim.jpg" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+
+            <img ng-src="{{profile.authUser.photoURL}}" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+            
         </div>
         <form id="profilePage-form8" class="list">
             <label class="item item-input" id="profilePage-textarea4">
-                <span class="input-label">MICHELE K, 25</span><textarea placeholder=""></textarea>
+                <span class="input-label">{{profile.authUser.displayName}}</span><textarea placeholder=""></textarea>
             </label>
             <label class="item item-input" id="profilePage-textarea5">
-                <span class="input-label">ABOUT ME ---</span><textarea placeholder=""></textarea>
+                <span class="input-label">ABOUT ME ---</span><textarea ng-model="profile.dbUser.aboutMe" placeholder=""></textarea>
             </label>
+            <!-- will be removed -->
+            <button ng-click="profile.logOff()">Log Out</button>
+            <button ng-click="profile.save()">Save</button>
         </form>
     </ion-content>
 </ion-view>

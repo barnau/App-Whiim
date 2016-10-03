@@ -16,14 +16,23 @@
         vm.test = 'this is a test from DefaultLoginController';
         vm.logIn = logIn;
         vm.logOut = logOut;
+        vm.facebookLogIn = facebookLogIn;
 
          firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-            $state.go('home.dashboard');
+            
+            $state.go('tabs.dashboard');
           } else {
+            
             $state.go('login');
           }
         });
+
+         function facebookLogIn() {
+            
+            FirebaseFactory.facebookLogIn()
+         }
+
 
         function logIn() {
             FirebaseFactory.logIn(vm.email, vm.password);
