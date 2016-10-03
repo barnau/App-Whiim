@@ -20,30 +20,30 @@
 
         
 
-        //event that fires on auth state change
-        firebase.auth().onAuthStateChanged(function(user) {
-            //if user logs in
-          if (user) {
-            //get user id
-            var userId = firebase.auth().currentUser.uid;
+        // //event that fires on auth state change
+        // firebase.auth().onAuthStateChanged(function(user) {
+        //     //if user logs in
+        //   if (user) {
+        //     //get user id
+        //     var userId = firebase.auth().currentUser.uid;
 
-            console.log(firebase.auth().currentUser);
+        //     console.log(firebase.auth().currentUser);
             
-            //onetime reuqest for logged in users profile info
-            return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-                //assign data to loggedInUser var
-                vm.loggedInUser = snapshot.val();
-                console.log(vm.loggedInUser);
-                $scope.$apply()
+        //     //onetime reuqest for logged in users profile info
+        //     return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+        //         //assign data to loggedInUser var
+        //         vm.loggedInUser = snapshot.val();
+        //         console.log(vm.loggedInUser);
+        //         $scope.$apply()
 
-            });
-            //go to dashboard
-            $state.go('home.dashboard');
-          } else {
+        //     });
+        //     //go to dashboard
+        //     $state.go('home.dashboard');
+        //   } else {
 
-            $state.go('login');
-          }
-        });
+        //     $state.go('login');
+        //   }
+        // });
 
 
         function saveProfileChanges() {
