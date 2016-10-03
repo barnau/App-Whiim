@@ -7,30 +7,32 @@
 
     <link rel="manifest" href="manifest.json">
 
-    <!-- un-comment this code to enable service worker
+  <!--    un-comment this code to enable service worker
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('service-worker.js')
           .then(() => console.log('service worker installed'))
           .catch(err => console.log('Error', err));
       }
-    </script>-->
+    </script> -->
 
-
-    <!-- compiled css output -->
+  <!-- CSS INJECTIONS -->
     <link href="css/ionic.app.css" rel="stylesheet">
     <link rel="stylesheet" href="lib/angular-toastr/dist/angular-toastr.css">
 
-    <!-- ionic/angularjs js -->
+  <!-- IONIC / ANGULAR JS -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-toastr/dist/angular-toastr.tpls.js"></script>
 
-    <!-- cordova script (this will be a 404 during development) -->
+  <!-- CORDOVA SCRIPT (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
-    <!-- your app's js -->
-    <script src="lib/angular-toastr/dist/angular-toastr.tpls.js"></script>
-    <script src="js/app.js"></script>
+  <!-- FIREBASE INJECTIONS -->
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/angularfire/dist/angularfire.js"></script>
+
   </head>
+
   <body ng-app="app" animation="slide-left-right-ios7">
     <div>
       <div>
@@ -54,8 +56,11 @@
       </ion-content>
     </ion-pane>
 
-    <!-- inject:js -->
+ 
+
+  <!-- JS INJECTIONS -->
     <script src="js/app.js"></script>
+    <script src="js/firebase.module.js"></script>
     <script src="js/routes.js"></script>
     <script src="js/chat/chat.controller.js"></script>
     <script src="js/core/facebook.factory.js"></script>
@@ -65,7 +70,7 @@
     <script src="js/tabs/dashboard/dashboard.controller.js"></script>
     <script src="js/tabs/notifications/notifications.controller.js"></script>
     <script src="js/tabs/profile/profile.controller.js"></script>
-    <!-- endinject -->
+ 
 
   </body>
 </html>
