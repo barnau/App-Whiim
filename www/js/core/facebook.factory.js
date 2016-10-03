@@ -7,6 +7,7 @@
 
     FacebookFactory.$inject = ['$q', '$window'];
 
+
     /* @ngInject */
     function FacebookFactory($q, $window) {
 

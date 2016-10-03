@@ -26,13 +26,13 @@
         });
 
         function logIn() {
-            FirebaseFactory.logIn(vm.email, vm.password)
+            FirebaseFactory.logIn(vm.email, vm.password);
         }
 
         function logOut() {
-            FirebaseFactory.logOff()
+            FirebaseFactory.logOff();
         }
-    };
+    }
 
     
 
