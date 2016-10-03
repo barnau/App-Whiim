@@ -5,10 +5,10 @@
         .module('app')
         .controller('ProfileController', ProfileController);
 
-    ProfileController.$inject = ['FirebaseFactory', '$scope', '$state'];
+    ProfileController.$inject = ['FirebaseFactory', '$scope', '$state', 'toastr'];
 
     /* @ngInject */
-    function ProfileController(FirebaseFactory, $scope, $state) {
+    function ProfileController(FirebaseFactory, $scope, $state, toastr) {
         var vm = this;
         vm.title = 'ProfileController';
         vm.logOff = logOff;
