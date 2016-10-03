@@ -13,27 +13,21 @@
         vm.title = 'ProfileController';
         vm.logOff = logOff;
         vm.save = save;
-        // vm.userPhotoUrl = '';
-        // vm.userDisplayName = '';
+        //user from firebase auth
         vm.authUser = {};
+        //user from firebase data to store info not from facebook
         vm.dbUser = {};
-        vm.userId = '',
+        
 
         
 
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-            // vm.userPhotoUrl = user.photoURL;
-            // vm.userDisplayName = user.displayName;
-            // vm.userId = user.uid;
+    
             vm.authUser = user;
            
 
-            FirebaseFactory.userProfileExists(user.uid).then(function(profileExists) {
-                if(profileExists) {
-
-                   
-                    return firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+            return firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
                         //assign data to dbUser var
                         vm.dbUser = snapshot.val();
                        
@@ -41,9 +35,6 @@
                         $scope.$apply()
 
                     });
-
-                } 
-            })
             
           } else {
 
@@ -61,34 +52,10 @@
         function save() {
            
 
-            FirebaseFactory.userProfileExists(vm.authUser.uid).then(function(result) {
-                if(result) {
-                    
-
-                    var userToEdit = angular.copy(vm.dbUser);
-                    vm.DataBaseRefToLoggedInUser = firebase.database().ref('users/' + vm.authUser.uid);
-                    vm.DataBaseRefToLoggedInUser.set(userToEdit);
-                   
-                } else {
-                    var DataBaseRefToLoggedInUser = firebase.database().ref('users/' + vm.authUser.uid);
-                  
-                    DataBaseRefToLoggedInUser.set({
-                        displayName: vm.authUser.displayName,
-                        email: vm.authUser.email,
-                        aboutMe: vm.dbUser.aboutMe
-                        
-                    });
-
-                }//end else
-            })
-
-
-
-
-
-
-            
-
+            var userToEdit = angular.copy(vm.dbUser);
+            vm.DataBaseRefToLoggedInUser = firebase.database().ref('users/' + vm.authUser.uid);
+            vm.DataBaseRefToLoggedInUser.set(userToEdit);
+            toastr.success('Profile saved');
         }
 
         activate();

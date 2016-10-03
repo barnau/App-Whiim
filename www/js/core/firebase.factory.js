@@ -78,6 +78,24 @@
             var provider = new firebase.auth.FacebookAuthProvider();
 
             firebase.auth().signInWithPopup(provider).then(function(result) {
+
+              userProfileExists(result.user.uid).then(function(userProfileExists) {
+                if(!userProfileExists) {
+                  
+                  var DataBaseRefToLoggedInUser = firebase.database().ref('users/' + result.user.uid);
+                  
+                    DataBaseRefToLoggedInUser.set({
+                        displayName: result.user.displayName,
+                        email: result.user.email
+                        
+                        
+                    });
+
+
+                }
+              })
+
+              console.log(result);
                   
                     
                   
