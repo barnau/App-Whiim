@@ -12,19 +12,20 @@ angular.module('app.routes', ['ionic', 'ui.router'])
   $urlRouterProvider.otherwise('/login');
   $stateProvider
     
-  
+  // will go to login by default
   .state('login', {
     url: '/login',
     templateUrl: 'js/login/defaultLogin.html',
     controller: 'DefaultLoginController as login'
   })
 
+  // abstract tabs view
   .state('tabs', {
     url: '/tabs',
     templateUrl: 'js/tabs/tabs.html',
     abstract: true
   })
-
+    // requires tabs first to get to dashboard
     .state('tabs.dashboard', {
       url: '/dashboard',
       views: {
@@ -34,7 +35,7 @@ angular.module('app.routes', ['ionic', 'ui.router'])
         }
       }
     })
-
+    // requires tabs first to get to create
     .state('tabs.create', {
       url: '/create',
       views: {
@@ -45,18 +46,7 @@ angular.module('app.routes', ['ionic', 'ui.router'])
       }
     })
 
-    // .state('chatScreen1', {
-    //   url: '/page5',
-    //   templateUrl: 'templates/chatScreen1.html',
-    //   controller: 'chatScreen1Ctrl'
-    // })
-
-    // .state('chatScreen2', {
-    //   url: '/page6',
-    //   templateUrl: 'templates/chatScreen2.html',
-    //   controller: 'chatScreen2Ctrl'
-    // })
-
+    // requires tabs first to get to profile
     .state('tabs.profile', {
       url: '/profile',
       views: {
@@ -66,7 +56,7 @@ angular.module('app.routes', ['ionic', 'ui.router'])
         }
       }
     })
-
+    // requires tabs first to get to notifications
     .state('tabs.notifications', {
       url: '/notifications',
       views: {
