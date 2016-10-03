@@ -5,20 +5,46 @@
         .module('app')
         .factory('FirebaseFactory', FirebaseFactory);
 
-    FirebaseFactory.$inject = ['$http', 'toastr'];
+    FirebaseFactory.$inject = ['$http', 'toastr', '$q'];
 
     /* @ngInject */
-    function FirebaseFactory($http, toastr) {
+    function FirebaseFactory($http, toastr, $q) {
         var service = {
             signUp: signUp,
             logIn: logIn,
             logOff: logOff,
-            facebookLogIn: facebookLogIn
+            facebookLogIn: facebookLogIn,
+            userProfileExists: userProfileExists
             
         };
         return service;
 
         ////////////////
+
+        //if user profile exists outside of auth in user table return
+        function userProfileExists(uid) {
+
+          var defer = $q.defer();
+          var result = false;
+
+          firebase.database().ref('users/' + uid).once('value', function(snapshot) {
+                if(snapshot.val() === null) {
+                    
+                    result = false;
+
+                    
+                } else {
+                    
+                    result = true;
+                }
+
+                defer.resolve(result);
+
+            })
+
+          return defer.promise;
+
+        }
         
 
         function signUp(email, password) {
