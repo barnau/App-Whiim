@@ -5,10 +5,10 @@
         .module('app')
         .factory('FirebaseFactory', FirebaseFactory);
 
-    FirebaseFactory.$inject = ['$http', 'toastr', 'ionic'];
+    FirebaseFactory.$inject = ['$http', 'toastr'];
 
     /* @ngInject */
-    function FirebaseFactory($http, toastr, ionic) {
+    function FirebaseFactory($http, toastr) {
         var service = {
             signUp: signUp,
             logIn: logIn,
