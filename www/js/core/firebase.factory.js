@@ -24,7 +24,7 @@
         function returnUserFromDB(uid) {
 
           var defer = $q.defer();
-          firebase.database().ref('/users/' + uid).once('value').then(function(snapshot) {
+          firebase.database().ref('users/' + uid).once('value').then(function(snapshot) {
                         //assign data to dbUser var
                         var result = snapshot.val();
 
@@ -126,7 +126,16 @@
                 });
         }
 
-
+        // function to create random string id for new events
+        function newGuid(){
+          function random4(){
+            return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1); 
+          }
+          return random4()+ '-' + random4() + random4() + '-' + random4();
+          console.log(newGuid);
+        }
 
         
     }

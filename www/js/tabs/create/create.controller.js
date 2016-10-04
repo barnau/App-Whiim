@@ -16,7 +16,22 @@
 
         ////////////////
 
+
+
+        function createActivity(){
+
+            var activityRef = firebase.database().ref('events/' + $localStorage.uid)
+                .set({
+                    name: "", 
+                    description: ""
+                });
+            }
+
+
         function activate() {
+            
+
+
         }
     }
 })();

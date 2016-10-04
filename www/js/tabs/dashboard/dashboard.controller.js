@@ -19,9 +19,9 @@
 
         FirebaseFactory.returnUserFromDB($sessionStorage.uid).then(function(user) {
                 vm.user = user;
-                $scope.user = user
+                $scope.user = user;
                 console.log(vm.user);
-        })
+        });
 
 
         
@@ -43,7 +43,7 @@
 
             toastr.success('Activity Set');
 
-         }
+         };
 
 
 
