@@ -81,7 +81,7 @@
             vm.DataBaseRefToLoggedInUser = firebase.database().ref('users/' + firebase.auth().currentUser.uid);
             vm.DataBaseRefToLoggedInUser.set($scope.user);
 
-            toastr.success('Activity Set');
+            
 
             pullUsersByActivity();
 

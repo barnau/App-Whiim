@@ -15,35 +15,16 @@
         vm.save = save;
         //user from firebase auth
         vm.user = {};
+        var uid = firebase.auth().currentUser.uid
+
+        console.log(uid)
         
-        FirebaseFactory.returnUserFromDB($sessionStorage.uid).then(function(user) {
+        FirebaseFactory.returnUserFromDB(uid).then(function(user) {
                 vm.user = user;
                 console.log(vm.user);
                 
         })
         
-
-        // firebase.auth().onAuthStateChanged(function(user) {
-        //   if (user) {
-    
-        //     vm.authUser = user;
-           
-
-        //     firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
-        //                 //assign data to dbUser var
-        //                 vm.dbUser = snapshot.val();
-                       
-                        
-        //                 $scope.$apply()
-
-        //             });
-            
-        //   } else {
-
-           
-        //     $state.go('login');
-        //   }
-        // });
 
 
         function logOff() {
@@ -58,7 +39,7 @@
 
             userToEdit.aboutMe = vm.user.aboutMe;
             console.log(userToEdit);
-            vm.DataBaseRefToLoggedInUser = firebase.database().ref('users/' + $sessionStorage.uid);
+            vm.DataBaseRefToLoggedInUser = firebase.database().ref('users/' + uid);
             vm.DataBaseRefToLoggedInUser.set(userToEdit);
             toastr.success('Profile saved');
         }
