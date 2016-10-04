@@ -3,7 +3,7 @@
 
     angular
         .module('app', [
-            'ionic', 'ui.router', 'firebase', 'toastr'
+            'ionic', 'ui.router', 'firebase', 'toastr', 'ngStorage'
         ])
         .config(function appConfig($urlRouterProvider, $stateProvider) {
 

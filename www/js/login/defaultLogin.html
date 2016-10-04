@@ -1,3 +1,4 @@
+
 <ion-content style="background-color:#44BBF8;">
     <div class="spacer" style="width: 300px; height: 0.222222px;"></div>
     <form id="defaultLoginPage-form1" class="list">
@@ -8,6 +9,8 @@
         <div class="spacer" style="width: 300.012px; height: 59.9769px;"></div>
         <!-- WILL IMPLEMENT THIS FEATURE ONCE A PROTOTYPE IS CREATED -->
         <!-- <button ui-sref="loginState" id="defaultLoginPage-button1" style="color:#FFFFFF;" class="button button-assertive  button-block icon-right ion-ios-home">Log in</button> -->
-        <a ui-sref="loginState" onclick="window.open('/signup', '_system', 'location=yes'); return false;" id="defaultLoginPage-button2" class="button button-positive  button-block icon-right ion-social-facebook">Login With Facebook</a>
+        <!-- old button - <a ui-sref="loginState" onclick="window.open('/signup', '_system', 'location=yes'); return false;" id="defaultLoginPage-button2" class="button button-positive  button-block icon-right ion-social-facebook">Login With Facebook</a> -->
+        <a id="defaultLoginPage-button2" ng-click="login.facebookLogIn()" class="button button-positive  button-block icon-right ion-social-facebook">Login With Facebook</a>
     </form>
 </ion-content>
+
