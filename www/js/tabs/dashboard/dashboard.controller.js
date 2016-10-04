@@ -5,10 +5,10 @@
         .module('app')
         .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ['FirebaseFactory', '$stateParams', '$state', '$scope', '$ionicPopover', '$sessionStorage'];
+    DashboardController.$inject = ['FirebaseFactory', '$stateParams', '$state', '$scope', '$ionicPopover', '$sessionStorage', 'toastr'];
 
     /* @ngInject */
-    function DashboardController(FirebaseFactory, $stateParams, $state, $scope, $ionicPopover, $sessionStorage) {
+    function DashboardController(FirebaseFactory, $stateParams, $state, $scope, $ionicPopover, $sessionStorage, toastr) {
         var vm = this;
         vm.title = 'DashboardController';
         vm.test = 'this is a test from DashboardController';
@@ -19,6 +19,7 @@
 
         FirebaseFactory.returnUserFromDB($sessionStorage.uid).then(function(user) {
                 vm.user = user;
+                $scope.user = user
                 console.log(vm.user);
         })
 
@@ -32,8 +33,15 @@
          });
 
          $scope.setActivity = function(activity) {
-            alert(activity);
-            console.log($sessionStorage.uid);
+            
+
+            
+            $scope.user.activity = activity;
+
+            vm.DataBaseRefToLoggedInUser = firebase.database().ref('users/' + $sessionStorage.uid);
+            vm.DataBaseRefToLoggedInUser.set($scope.user);
+
+            toastr.success('Activity Set');
 
          }
 
