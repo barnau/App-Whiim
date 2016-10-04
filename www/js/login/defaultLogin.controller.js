@@ -21,9 +21,9 @@
 
          firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-            $sessionStorage.uid = user.uid;
+             //$sessionStorage.uid = user.uid;
             
-            $state.go('tabs.dashboard');
+            // $state.go('tabs.dashboard');
           } else {
 
             
@@ -33,7 +33,11 @@
 
          function facebookLogIn() {
             
-            FirebaseFactory.facebookLogIn()
+            FirebaseFactory.facebookLogIn().then(
+                function() {
+                    $state.go('tabs.dashboard');
+                }
+            );
          }
 
 
