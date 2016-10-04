@@ -5,43 +5,45 @@
         .module('app')
         .controller('ProfileController', ProfileController);
 
-    ProfileController.$inject = ['FirebaseFactory', '$scope', '$state', 'toastr'];
+    ProfileController.$inject = ['FirebaseFactory', '$scope', '$state', 'toastr', '$sessionStorage'];
 
     /* @ngInject */
-    function ProfileController(FirebaseFactory, $scope, $state, toastr) {
+    function ProfileController(FirebaseFactory, $scope, $state, toastr, $sessionStorage) {
         var vm = this;
         vm.title = 'ProfileController';
         vm.logOff = logOff;
         vm.save = save;
         //user from firebase auth
-        vm.authUser = {};
-        //user from firebase data to store info not from facebook
-        vm.dbUser = {};
+        vm.user = {};
+        
+        FirebaseFactory.returnUserFromDB($sessionStorage.uid).then(function(user) {
+                vm.user = user;
+                console.log(vm.user);
+                
+        })
         
 
-        
-
-        firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
+        // firebase.auth().onAuthStateChanged(function(user) {
+        //   if (user) {
     
-            vm.authUser = user;
+        //     vm.authUser = user;
            
 
-            return firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
-                        //assign data to dbUser var
-                        vm.dbUser = snapshot.val();
+        //     firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+        //                 //assign data to dbUser var
+        //                 vm.dbUser = snapshot.val();
                        
                         
-                        $scope.$apply()
+        //                 $scope.$apply()
 
-                    });
+        //             });
             
-          } else {
+        //   } else {
 
            
-            $state.go('login');
-          }
-        });
+        //     $state.go('login');
+        //   }
+        // });
 
 
         function logOff() {
@@ -52,8 +54,11 @@
         function save() {
            
 
-            var userToEdit = angular.copy(vm.dbUser);
-            vm.DataBaseRefToLoggedInUser = firebase.database().ref('users/' + vm.authUser.uid);
+            var userToEdit = angular.copy(vm.user);
+
+            userToEdit.aboutMe = vm.user.aboutMe;
+            console.log(userToEdit);
+            vm.DataBaseRefToLoggedInUser = firebase.database().ref('users/' + $sessionStorage.uid);
             vm.DataBaseRefToLoggedInUser.set(userToEdit);
             toastr.success('Profile saved');
         }

@@ -3,15 +3,15 @@
         <h1 id="profilePage-heading3" style="color:#000000;text-align:center;">PROFILE PAGE</h1>
         <div>
 
-            <img ng-src="{{profile.authUser.photoURL}}" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+            <img ng-src="{{profile.user.photoURL}}" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
             
         </div>
         <form id="profilePage-form8" class="list">
             <label class="item item-input" id="profilePage-textarea4">
-                <span class="input-label">{{profile.authUser.displayName}}</span><textarea placeholder=""></textarea>
+                <span class="input-label">{{profile.user.displayName}}</span><textarea placeholder=""></textarea>
             </label>
             <label class="item item-input" id="profilePage-textarea5">
-                <span class="input-label">ABOUT ME ---</span><textarea ng-model="profile.dbUser.aboutMe" placeholder=""></textarea>
+                <span class="input-label">ABOUT ME ---</span><textarea ng-model="profile.user.aboutMe" placeholder=""></textarea>
             </label>
             <!-- will be removed -->
             <button ng-click="profile.logOff()">Log Out</button>

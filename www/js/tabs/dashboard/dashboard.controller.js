@@ -5,57 +5,39 @@
         .module('app')
         .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ['FirebaseFactory', '$stateParams', '$state', '$scope'];
+    DashboardController.$inject = ['FirebaseFactory', '$stateParams', '$state', '$scope', '$ionicPopover', '$sessionStorage'];
 
     /* @ngInject */
-    function DashboardController(FirebaseFactory, $stateParams, $state, $scope) {
+    function DashboardController(FirebaseFactory, $stateParams, $state, $scope, $ionicPopover, $sessionStorage) {
         var vm = this;
         vm.title = 'DashboardController';
         vm.test = 'this is a test from DashboardController';
         vm.logOff = logOff;
-        vm.saveProfileChanges = saveProfileChanges;
-        vm.userDataBaseRef ={};
-        vm.loggedInUser = {};
+        vm.user = {};
+        
+        
+
+        FirebaseFactory.returnUserFromDB($sessionStorage.uid).then(function(user) {
+                vm.user = user;
+                console.log(vm.user);
+        })
 
 
         
 
-        // //event that fires on auth state change
-        // firebase.auth().onAuthStateChanged(function(user) {
-        //     //if user logs in
-        //   if (user) {
-        //     //get user id
-        //     var userId = firebase.auth().currentUser.uid;
+        $ionicPopover.fromTemplateUrl('js/tabs/dashboard/popover.html', {
+             scope: $scope,
+         }).then(function(popover) {
+             $scope.popover = popover;
+         });
 
-        //     console.log(firebase.auth().currentUser);
-            
-        //     //onetime reuqest for logged in users profile info
-        //     return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-        //         //assign data to loggedInUser var
-        //         vm.loggedInUser = snapshot.val();
-        //         console.log(vm.loggedInUser);
-        //         $scope.$apply()
+         $scope.setActivity = function(activity) {
+            alert(activity);
+            console.log($sessionStorage.uid);
 
-        //     });
-        //     //go to dashboard
-        //     $state.go('home.dashboard');
-        //   } else {
-
-        //     $state.go('login');
-        //   }
-        // });
+         }
 
 
-        function saveProfileChanges() {
-            var userToEdit = angular.copy(vm.loggedInUser);
-            console.log(userToEdit);
-            
-            var userId = firebase.auth().currentUser.uid;
-            console.log(userId);
-            
-            vm.DataBaseRefToLoggedInUser = firebase.database().ref('users/' + userId);
-            vm.DataBaseRefToLoggedInUser.set(userToEdit);
-        }
 
         function logOff() {FirebaseFactory.logOff()}       
         
