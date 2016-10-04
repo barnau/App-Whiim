@@ -21,9 +21,9 @@
 
          firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-            $sessionStorage.uid = user.uid;
+             //$sessionStorage.uid = user.uid;
             
-            $state.go('tabs.dashboard');
+            // $state.go('tabs.dashboard');
           } else {
 
             

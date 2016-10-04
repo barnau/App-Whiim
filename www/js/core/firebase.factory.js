@@ -36,6 +36,8 @@
 
         }
 
+
+
         //if user profile exists outside of auth in user table return
         function userProfileExists(uid) {
 
@@ -97,15 +99,19 @@
               console.log(result.user);
               userProfileExists(result.user.uid).then(function(userProfileExists) {
                 if(!userProfileExists) {
-                  
-                  var DataBaseRefToLoggedInUser = firebase.database().ref('users/' + result.user.uid);
+                  console.log('user profile doesnt exist yet');
+                  var DataBaseRefToLoggedInUser = firebase.database().ref('users/' + firebase.auth().currentUser.uid);
                   
                     DataBaseRefToLoggedInUser.set({
                         displayName: result.user.displayName,
                         email: result.user.email,
-                        photoURL: result.user.photoURL  
+                        photoURL: result.user.photoURL,
+                        activity: 'Select an activity'
+                        
                     });
                 }
+
+                $state.go('tabs.dashboard')
               })
 
               }).catch(function(error) {

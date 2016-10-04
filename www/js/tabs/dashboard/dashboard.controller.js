@@ -14,14 +14,41 @@
         vm.test = 'this is a test from DashboardController';
         vm.logOff = logOff;
         vm.user = {};
-        
-        
+        vm.usersByActivity = {};
 
-        FirebaseFactory.returnUserFromDB($sessionStorage.uid).then(function(user) {
-                vm.user = user;
-                $scope.user = user
-                console.log(vm.user);
-        })
+
+        
+        function pullUsersByActivity() {
+
+            FirebaseFactory.returnUserFromDB($sessionStorage.uid).then(function(user) {
+                    vm.user = user;
+                    $scope.user = user;
+                    console.log(firebase.auth().currentUser.uid);
+                    console.log(user.activity);
+
+                    var ref = firebase.database().ref('/users').orderByChild('activity').equalTo(user.activity);
+                    ref.once('value', function(snapshot) {
+                    if(snapshot.val() === null) {
+                        
+                        
+                        console.log('fuck you!!!')
+                        
+                    } else {
+                        
+                        vm.usersByActivity = snapshot.val();
+                        console.log(vm.usersByActivity);
+                    }
+
+                    
+
+                })
+            })
+        }
+
+        pullUsersByActivity();
+
+
+        //figure out how to return users where activities are alike.
 
 
         
@@ -34,14 +61,16 @@
 
          $scope.setActivity = function(activity) {
             
-
+            
             
             $scope.user.activity = activity;
-
-            vm.DataBaseRefToLoggedInUser = firebase.database().ref('users/' + $sessionStorage.uid);
+            console.log(firebase.auth().currentUser.uid);
+            vm.DataBaseRefToLoggedInUser = firebase.database().ref('users/' + firebase.auth().currentUser.uid);
             vm.DataBaseRefToLoggedInUser.set($scope.user);
 
             toastr.success('Activity Set');
+
+            pullUsersByActivity();
 
          }
 
