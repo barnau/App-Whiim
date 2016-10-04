@@ -33,7 +33,11 @@
 
          function facebookLogIn() {
             
-            FirebaseFactory.facebookLogIn()
+            FirebaseFactory.facebookLogIn().then(
+                function() {
+                    $state.go('tabs.dashboard');
+                }
+            );
          }
 
 

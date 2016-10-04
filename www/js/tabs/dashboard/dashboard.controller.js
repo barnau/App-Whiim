@@ -16,15 +16,28 @@
         vm.user = {};
         vm.usersByActivity = {};
 
+        FirebaseFactory.returnUserFromDB(firebase.auth().currentUser.uid).then(
+            function(user) {
+                if(user) {
+                    $scope.user = user;
+                } else {
+                    toastr.error("No user logged in.");
+                }
+
+            }
+        )
+
 
         
         function pullUsersByActivity() {
 
-            FirebaseFactory.returnUserFromDB($sessionStorage.uid).then(function(user) {
-                    vm.user = user;
-                    $scope.user = user;
-                    console.log(firebase.auth().currentUser.uid);
-                    console.log(user.activity);
+            
+            console.log(firebase.auth().currentUser.uid);
+
+            FirebaseFactory.returnUserFromDB(firebase.auth().currentUser.uid).then(function(user) {
+
+                $scope.user = user
+                    
 
                     var ref = firebase.database().ref('/users').orderByChild('activity').equalTo(user.activity);
                     ref.once('value', function(snapshot) {
@@ -45,7 +58,7 @@
             })
         }
 
-        pullUsersByActivity();
+        
 
 
         //figure out how to return users where activities are alike.
@@ -61,7 +74,7 @@
 
          $scope.setActivity = function(activity) {
             
-            
+            console.log(activity);
             
             $scope.user.activity = activity;
             console.log(firebase.auth().currentUser.uid);
