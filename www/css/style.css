@@ -117,3 +117,19 @@ ion-popover-view .list {
 #dashboardHtml {
     background-color: #EFEFEF;
 }
+
+/***************************************************
+                Profile Page
+***************************************************/
+
+.profile-photo {
+    width: 40%;
+    height: 40%;
+    border-radius: 50%; 
+}
+
+
+
+
+
+
