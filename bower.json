@@ -7,6 +7,7 @@
   "dependencies": {
     "angular-toastr": "^2.1.1",
     "firebase": "^3.4.1",
-    "angularfire": "^2.0.2"
+    "angularfire": "^2.0.2",
+    "ionic-ion-tinder-cards": "ionic-contrib-tinder-cards#*"
   }
 }
