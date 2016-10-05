@@ -19,13 +19,13 @@
             </form>
         </div>
         <td-cards>
-              <td-card ng-repeat="card in dashboard.currentCard" on-destroy="dashboard.cardDestroyed($index)" on-swipe="dashboard.cardSwiped($index)">
+              <td-card ng-repeat="card in dashboard.currentCard" on-destroy="dashboard.cardDestroyed($index)" on-swipe-right="dashboard.cardSwiped($index)">
                  <img ng-src="{{card.value.photoURL}}" width="60px">   
                 <label>{{card.value.displayName}}</label>
               </td-card>
             </td-cards>
 
-            <pre>{{dashboard.currentCard | json}}</pre>
+            
             
     </ion-content>
 </ion-view>
