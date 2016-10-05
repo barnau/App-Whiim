@@ -1,7 +1,10 @@
 <ion-view title="Activity Feed" hide-nav-bar="true" id="page8" style="background-color:#F5F4F7;">
     <ion-content padding="true" class="manual-ios-statusbar-padding">
-        <button id="activityFeed-button16" class="button button-positive" ng-click="popover.show($event)" >{{user.activity}}</button>
-        <button id="activityFeed-button18" class="button button-positive  icon ion-ios-email"></button>
+         <div class="defaultHeader">
+            <label class="deafultHeaderTitle">WHiiM</label>
+            <button class="messagesHeaderBtn button icon ion-ios-email"></button>
+        </div>
+        <button id="activityFeedBtn" class="button" ng-click="popover.show($event)" >{{user.activity}}</button>
         <div class="list card" id="activityFeed-card22">
             <form id="activityFeed-form12" class="list">
                 <label class="item item-input" id="activityFeed-input14">
@@ -20,6 +23,7 @@
         </div>
     </ion-content>
 </ion-view>
+
 
 <!-- <script id="templates/popover.html" type="text/ng-template">
     <ion-popover-view>

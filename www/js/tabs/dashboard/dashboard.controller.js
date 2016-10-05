@@ -91,7 +91,11 @@
 
         function logOff() {FirebaseFactory.logOff()}       
         
-
+        function ContentController($scope, $ionicSideMenuDelegate) {
+            $scope.toggleLeft = function() {
+                $ionicSideMenuDelegate.toggleLeft();
+            };
+        }
 
       
         
@@ -100,6 +104,7 @@
         ////////////////
 
         function activate() {
+
         }
     }
 })();
