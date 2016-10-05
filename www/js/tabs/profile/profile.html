@@ -2,28 +2,32 @@
     <ion-content class="manual-ios-statusbar-padding">
         <div class="defaultHeader">
             <label class="deafultHeaderTitle">WHiiM</label>
-            <button class="messagesHeaderBtn button icon ion-ios-email"></button>
+            <button class="messagesHeaderBtn button icon ion-chatboxes"></button>
         </div>
-<<<<<<< HEAD
-        <h1 id="profilePage-heading3" style="color:#000000;text-align:center;">{{profile.user.displayName}}</h1>
-=======
-        <h1 id="profilePage-heading3" style="color:#000000;text-align:center;">PROFILE PAGE</h1>
->>>>>>> fa03d4f29062cf3c13b6f8cc502b4f4827ba5c10
-        <div>
-
             <img class="profile-photo" ng-src="{{profile.user.photoURL}}" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+         <h1 id="profilePage-heading3" style="color:#000000;text-align:center;">{{profile.user.displayName}}</h1>
             
         </div>
-        <form id="profilePage-form8" class="list">
-            <label class="item item-input" id="profilePage-textarea4">
-                <span class="input-label"></span><textarea placeholder=""></textarea>
-            </label>
+
+        <div class="about-me-div row">
+            <div class="col">
             <label class="item item-input" id="profilePage-textarea5">
-                <span class="input-label">ABOUT ME ---</span><textarea ng-model="profile.user.aboutMe" placeholder=""></textarea>
+                <span class="input-label">About:
+                 <textarea ng-model="profile.user.aboutMe" placeholder=""></textarea></span>
             </label>
-            <!-- will be removed -->
-            <button ng-click="profile.logOff()">Log Out</button>
-            <button ng-click="profile.save()">Save</button>
-        </form>
+            </div>
+        </div>
+            
+
+
+            <!-- buttons -->
+            <div class="row">
+                <div class="col">
+                    <button class="button button-block ion-gear-a save-btn" ng-click="profile.save()"> Save</button>
+                </div>
+                <div class="col">
+                    <button class="button button-block ion-log-out logOff-btn" ng-click="profile.logOff()"> Sign Out</button>
+                </div>
+            </div>
     </ion-content>
 </ion-view>

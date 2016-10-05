@@ -6,21 +6,36 @@
         </div>
         <button id="activityFeedBtn" class="button" ng-click="popover.show($event)" >{{user.activity}}</button>
         <div>
+
+            
             <td-cards>
               <td-card class="list card" ng-repeat="card in dashboard.currentCard" on-destroy="dashboard.cardDestroyed($index)" on-swipe-right="dashboard.cardSwiped($index)">
                  <img ng-src="{{card.value.photoURL}}" width="60px">   
                 <label>{{card.value.displayName}}</label>
               </td-card>
             </td-cards>
-            <!-- <div class=" item item-image">
-                <img src="img/KDRX0AYVQimFyuLsT9ZR_michelekforwhiim.jpg" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
-            </div> -->
-            <form id="activityFeed-form7" class="list">
-                <label class="item item-input" id="activityFeed-textarea1">
-                    <span class="input-label">"Hike Potato Chip Rock"</span><textarea placeholder=""></textarea>
-                </label>
-            </form>
+            
+            
+          
         </div>
+       <!--  <div class="list card">
+
+          <div class="item item-avatar">
+            <img src="avatar.jpg">
+            <h2>Pretty Hate Machine</h2>
+            <p>Nine Inch Nails</p>
+          </div>
+
+          <div class="item item-image">
+            <img src="cover.jpg">
+          </div>
+
+          <a class="item item-icon-left assertive" href="#">
+            <i class="icon ion-music-note"></i>
+            Start listening
+          </a>
+
+</div> -->
 
             
             

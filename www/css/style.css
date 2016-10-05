@@ -111,6 +111,9 @@ ion-popover-view .list {
     text-align: center;
 }
 
+ion-tab {
+}
+
 
 /***************************************************
                 Dashboard Html
@@ -123,10 +126,29 @@ ion-popover-view .list {
                 Profile Page
 ***************************************************/
 
+.card-photo,
 .profile-photo {
     width: 40%;
     height: 40%;
     border-radius: 50%; 
+}
+
+.profile-photo{
+    border: 4px solid #50BDD4;
+}
+
+.save-btn {
+    background-color: #fff;
+    border-color: #50BDD4;
+    color: #50BDD4;
+    font-weight: bold;
+}
+
+.logOff-btn {
+    background-color: #fff;
+    border-color: rgb(255,59,63);
+    color: rgb(255,59,63);
+    font-weight: bold;
 }
 
 
