@@ -5,10 +5,10 @@
         .module('app')
         .factory('FirebaseFactory', FirebaseFactory);
 
-    FirebaseFactory.$inject = ['$http', 'toastr', '$q', '$state'];
+    FirebaseFactory.$inject = ['$http', 'toastr', '$q', '$state', '$sessionStorage'];
 
     /* @ngInject */
-    function FirebaseFactory($http, toastr, $q, $state) {
+    function FirebaseFactory($http, toastr, $q, $state, $sessionStorage) {
         var service = {
             signUp: signUp,
             logIn: logIn,
@@ -100,7 +100,9 @@
 
             firebase.auth().signInWithPopup(provider)
                 .then(function(result) {
-                    console.log(result.user);
+                    
+                    $sessionStorage.uid = result.user.uid;
+                    console.log( $sessionStorage.uid);
                     userProfileExists(result.user.uid).then(function(userProfileExists) {
                         if (!userProfileExists) {
                             console.log('user profile doesnt exist yet');
