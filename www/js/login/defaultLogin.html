@@ -1,16 +1,17 @@
 
-<ion-content style="background-color:#44BBF8;">
+<ion-content style="background-color:#CAEBF2;">
     <div class="spacer" style="width: 300px; height: 0.222222px;"></div>
     <form id="defaultLoginPage-form1" class="list">
-        <div class="spacer" style="width: 299.977px; height: 21.956px;"></div>
         <div>
-            <img src="img/JCZsD1XShSCIZ4ITm4uK_oie_transparent4.png" width="80%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+            <img src="img/whiim trans.png" id="defaultLoginImg">
         </div>
-        <div class="spacer" style="width: 300.012px; height: 59.9769px;"></div>
         <!-- WILL IMPLEMENT THIS FEATURE ONCE A PROTOTYPE IS CREATED -->
         <!-- <button ui-sref="loginState" id="defaultLoginPage-button1" style="color:#FFFFFF;" class="button button-assertive  button-block icon-right ion-ios-home">Log in</button> -->
         <!-- old button - <a ui-sref="loginState" onclick="window.open('/signup', '_system', 'location=yes'); return false;" id="defaultLoginPage-button2" class="button button-positive  button-block icon-right ion-social-facebook">Login With Facebook</a> -->
         <a id="defaultLoginPage-button2" ng-click="login.facebookLogIn()" class="button  button-block icon-right ion-social-facebook">Login With Facebook</a>
+
+        <button id="defaultLoginPageBtn1" ng-click="login.facebookLogIn()" class="button button-positive  button-block icon-right ion-social-facebook">Login With Facebook</button>
+        <button id="defaultLoginPageBtn2" ng-click="login.facebookLogIn()" class="button button-assertive  button-block icon-right ion-ios-home">Login</button>
     </form>
 </ion-content>
 

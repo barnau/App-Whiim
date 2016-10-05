@@ -23,6 +23,81 @@
         border-right: 0px;
     }
 
-#defaultLoginPage-button2 {
-    background-color: green;
+
+/***************************************************
+                Default Header Bar
+***************************************************/
+.bar.bar-positive {
+    background-color: #A9A9A9;
+    height: 3.5em;
+    border-color: #A9A9A9;
+    background-image: none;
 }
+
+.defaultHeader {
+    background-color: #A9A9A9;
+    height: 3.5em;
+    width: 100%;
+    margin-bottom: 20px;
+    box-shadow: 0px 3px 5px #808080;
+    text-align: center;
+}
+
+.messagesHeaderBtn {
+    background-color: #A9A9A9;
+    color: #fff;
+    float: right;
+    box-shadow: 0px 2px 4px #808080;
+    font-size: 1.5em;
+}
+
+.deafultHeaderTitle {
+    text-align: center;
+    color: #fff;
+    font-size: 2.4em;
+    font-family: 'Raleway', sans-serif;
+}
+
+/***************************************************
+                Default Login Html
+***************************************************/
+#defaultLoginImg {
+    width: 90%; 
+    height: auto;
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 18%;
+    margin-bottom: 10%;
+}
+
+#defaultLoginPageBtn1 {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    box-shadow: 0px 3px 6px #bbb;
+}
+
+#defaultLoginPageBtn2 {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    box-shadow: 0px 3px 6px #bbb;
+    background-color: #ff3b3f;
+}
+
+
+
+#activityFeedBtn {
+    width: 90%;
+    background-color: #CAEBF2;
+    margin-left: 5%;
+    margin-right: 5%;
+    color: #fff;
+    font-size: 1.7em;
+}
+
+ion-popover-view .list {
+    text-align: center;
+}
+>>>>>>> 8e692762e9180a2432faf248337e238d6475afd3
