@@ -59,6 +59,15 @@
 }
 
 /***************************************************
+             Default Tabs Controller
+***************************************************/
+.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {    
+    opacity: 1;
+    color: #ff3b3f;
+    box-shadow: 0px 2px 4px #ccc;
+}
+
+/***************************************************
                 Default Login Html
 ***************************************************/
 #defaultLoginImg {
@@ -95,9 +104,17 @@
     margin-right: 5%;
     color: #fff;
     font-size: 1.7em;
+    box-shadow: 0px 2px 4px #ccc;
 }
 
 ion-popover-view .list {
     text-align: center;
 }
->>>>>>> 8e692762e9180a2432faf248337e238d6475afd3
+
+
+/***************************************************
+                Dashboard Html
+***************************************************/
+#dashboardHtml {
+    background-color: #EFEFEF;
+}

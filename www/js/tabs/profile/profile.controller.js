@@ -15,7 +15,7 @@
         vm.save = save;
         //user from firebase auth
         vm.user = {};
-        var uid = firebase.auth().currentUser.uid
+        var uid = $sessionStorage.uid
 
         console.log(uid)
         

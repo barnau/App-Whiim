@@ -1,17 +1,17 @@
-<ion-view title="Activity Feed" hide-nav-bar="true" id="page8" style="background-color:#F5F4F7;">
-    <ion-content padding="true" class="manual-ios-statusbar-padding">
-         <div class="defaultHeader">
+<ion-view hide-nav-bar="true" id="dashboardHtml">
+    <ion-content class="manual-ios-statusbar-padding">
+        <div class="defaultHeader">
             <label class="deafultHeaderTitle">WHiiM</label>
             <button class="messagesHeaderBtn button icon ion-ios-email"></button>
         </div>
         <button id="activityFeedBtn" class="button" ng-click="popover.show($event)" >{{user.activity}}</button>
-        <div class="list card" id="activityFeed-card22">
-            <form id="activityFeed-form12" class="list">
-                <label class="item item-input" id="activityFeed-input14">
-                    <span class="input-label">MICHELE KEMPINSKY, 25</span>
-                    <input type="text" placeholder="">
-                </label>
-            </form>
+        <div>
+            <td-cards>
+              <td-card class="list card" ng-repeat="card in dashboard.currentCard" on-destroy="dashboard.cardDestroyed($index)" on-swipe-right="dashboard.cardSwiped($index)">
+                 <img ng-src="{{card.value.photoURL}}" width="60px">   
+                <label>{{card.value.displayName}}</label>
+              </td-card>
+            </td-cards>
             <!-- <div class=" item item-image">
                 <img src="img/KDRX0AYVQimFyuLsT9ZR_michelekforwhiim.jpg" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
             </div> -->
@@ -21,12 +21,6 @@
                 </label>
             </form>
         </div>
-        <td-cards>
-              <td-card ng-repeat="card in dashboard.currentCard" on-destroy="dashboard.cardDestroyed($index)" on-swipe-right="dashboard.cardSwiped($index)">
-                 <img ng-src="{{card.value.photoURL}}" width="60px">   
-                <label>{{card.value.displayName}}</label>
-              </td-card>
-            </td-cards>
 
             
             
