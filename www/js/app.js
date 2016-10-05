@@ -3,7 +3,7 @@
 
     angular
         .module('app', [
-            'ionic', 'ui.router', 'firebase', 'toastr', 'ngStorage'
+            'ionic', 'ui.router', 'firebase', 'toastr', 'ngStorage', 'ionic.contrib.ui.tinderCards'
         ])
         .config(function appConfig($urlRouterProvider, $stateProvider) {
 

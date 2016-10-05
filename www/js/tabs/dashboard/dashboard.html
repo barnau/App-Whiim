@@ -9,15 +9,22 @@
                     <input type="text" placeholder="">
                 </label>
             </form>
-            <div class=" item item-image">
-                <!-- <img src="img/KDRX0AYVQimFyuLsT9ZR_michelekforwhiim.jpg" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
- -->            </div>
+            <!-- <div class=" item item-image">
+                <img src="img/KDRX0AYVQimFyuLsT9ZR_michelekforwhiim.jpg" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+            </div> -->
             <form id="activityFeed-form7" class="list">
                 <label class="item item-input" id="activityFeed-textarea1">
                     <span class="input-label">"Hike Potato Chip Rock"</span><textarea placeholder=""></textarea>
                 </label>
             </form>
         </div>
+        <td-cards>
+              <td-card ng-repeat="(userid, user) in dashboard.usersByActivity" on-destroy="dashboard.cardDestroyed(userid)" on-swipe="dashboard.cardSwiped(userid)">
+                 <img ng-src="{{user.photoURL}}" width="50px">   
+                <label>{{user.displayName}}</label>
+              </td-card>
+            </td-cards>
+            <pre> {{dashboard.usersByActivity | json}} </pre>
     </ion-content>
 </ion-view>
 

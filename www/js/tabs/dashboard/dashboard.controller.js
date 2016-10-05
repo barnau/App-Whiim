@@ -13,8 +13,13 @@
         vm.title = 'DashboardController';
         vm.test = 'this is a test from DashboardController';
         vm.logOff = logOff;
+        vm.cardDestroyed = cardDestroyed;
+        vm.cardSwiped = cardSwiped;
         vm.user = {};
         vm.usersByActivity = {};
+        var uid = firebase.auth().currentUser.uid;
+
+        //reminder used $scope.user to make scope available in ionic popover
 
         FirebaseFactory.returnUserFromDB(firebase.auth().currentUser.uid).then(
             function(user) {
@@ -32,9 +37,9 @@
         function pullUsersByActivity() {
 
             
-            console.log(firebase.auth().currentUser.uid);
+            
 
-            FirebaseFactory.returnUserFromDB(firebase.auth().currentUser.uid).then(function(user) {
+            FirebaseFactory.returnUserFromDB(uid).then(function(user) {
 
                 $scope.user = user
                     
@@ -44,12 +49,12 @@
                     if(snapshot.val() === null) {
                         
                         
-                        console.log('fuck you!!!')
+                        console.log('No one found');
                         
                     } else {
                         
                         vm.usersByActivity = snapshot.val();
-                        console.log(vm.usersByActivity);
+                        
                     }
 
                     
@@ -60,8 +65,17 @@
 
         
 
+        function cardDestroyed(id) {
 
-        //figure out how to return users where activities are alike.
+            console.log(id + ": card destroyed")
+            console.log(vm.usersByActivity);
+            delete vm.usersByActivity.id;
+            console.log(vm.usersByActivity);
+        }
+
+        function cardSwiped(id) {
+            console.log(id + ": card swiped");
+        }
 
 
         
@@ -74,11 +88,11 @@
 
          $scope.setActivity = function(activity) {
             
-            console.log(activity);
+            
             
             $scope.user.activity = activity;
-            console.log(firebase.auth().currentUser.uid);
-            vm.DataBaseRefToLoggedInUser = firebase.database().ref('users/' + firebase.auth().currentUser.uid);
+            
+            vm.DataBaseRefToLoggedInUser = firebase.database().ref('users/' + uid);
             vm.DataBaseRefToLoggedInUser.set($scope.user);
 
             
