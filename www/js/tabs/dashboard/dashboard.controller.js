@@ -110,6 +110,8 @@
 
         function cardSwiped(card) {
             //reference to notifications/receiverId/senderId
+            console.log(card);
+            console.log(uid);
             var ref = firebase.database().ref('notifications/' + card.key + '/' + uid)
 
 

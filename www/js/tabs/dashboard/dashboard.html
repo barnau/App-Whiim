@@ -10,7 +10,7 @@
 
             
             <td-cards>
-              <td-card class="list card" ng-repeat="card in dashboard.currentCard" on-destroy="dashboard.cardDestroyed($index)" on-swipe-right="dashboard.cardSwiped($index)">
+              <td-card class="list card" ng-repeat="card in dashboard.currentCard" on-destroy="dashboard.cardDestroyed(card)" on-swipe-right="dashboard.cardSwiped(card)">
 
                  <img ng-src="{{card.value.photoURL}}" width="60px">   
                 <label>{{card.value.displayName}}</label>
