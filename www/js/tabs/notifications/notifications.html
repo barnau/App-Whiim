@@ -1,19 +1,13 @@
 <ion-view title="Notifications" hide-nav-bar="true" id="notifications">
     <ion-content padding="true" class="manual-ios-statusbar-padding">
         <h1 id="notifications-heading4" style="color:#000000;text-align:center;">NOTIFICATIONS</h1>
-        <ion-list id="notifications-list7">
+        <ion-list ng-repeat="note in notifications" id="notifications-list7">
             <ion-item class="item-avatar item-icon-right" id="notifications-list-item13">
-                <h2>Ryan D. wants to join!</h2>
+                <h2>{{note.displayName}} wants to join!</h2>
                 <i class="icon ion-android-cancel"></i>
             </ion-item>
-            <ion-item class="item-avatar item-icon-right" id="notifications-list-item14">
-                <h2>Reggie S. wants to join!</h2>
-                <i class="icon ion-android-cancel"></i>
-            </ion-item>
-            <ion-item class="item-avatar item-icon-right" id="notifications-list-item15">
-                <h2>Dreu S. wants to join!</h2>
-                <i class="icon ion-android-cancel"></i>
-            </ion-item>
+            
         </ion-list>
+        
     </ion-content>
 </ion-view>

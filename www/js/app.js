@@ -64,7 +64,7 @@
                 views: {
                     'notifications': {
                         templateUrl: 'js/tabs/notifications/notifications.html',
-                        controller: 'NotificationsController as notifications'
+                        controller: 'NotificationsController as notifs'
                     }
                 }
             });

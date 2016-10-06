@@ -15,6 +15,7 @@
             logOff: logOff,
             facebookLogIn: facebookLogIn,
             userProfileExists: userProfileExists,
+            multipleNotificationsFromUIDExists: multipleNotificationsFromUIDExists,
             returnUserFromDB: returnUserFromDB
 
         };
@@ -46,7 +47,7 @@
 
             firebase.database().ref('users/' + uid).once('value', function(snapshot) {
                 if (snapshot.val() === null) {
-
+                    
                     result = false;
 
 
@@ -54,6 +55,23 @@
 
                     result = true;
                 }
+
+                defer.resolve(result);
+
+            })
+
+            return defer.promise;
+
+        }
+
+        function multipleNotificationsFromUIDExists(ref) {
+
+            var defer = $q.defer();
+            var result = false;
+
+            ref.once('value', function(snapshot) {
+               var result = snapshot.hasChildren()
+               console.log(result);
 
                 defer.resolve(result);
 

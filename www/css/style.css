@@ -150,6 +150,10 @@ ion-popover-view .list {
                 Profile Page
 ***************************************************/
 
+#profilePage {
+    background-color: #EFEFEF;
+}
+
 .card-photo,
 .profile-photo {
     width: 40%;
@@ -158,21 +162,24 @@ ion-popover-view .list {
 }
 
 .profile-photo{
-    border: 4px solid #50BDD4;
+    border: 4px solid #96D7E5;
 }
 
 .save-btn {
-    background-color: #fff;
-    border-color: #50BDD4;
-    color: #50BDD4;
+    background-color: #96D7E5;
+    color: #fff;
     font-weight: bold;
+    box-shadow: 0px 2px 4px #ccc;
 }
 
 .logOff-btn {
-    background-color: #fff;
-    border-color: rgb(255,59,63);
-    color: rgb(255,59,63);
+    background-color: rgb(255,59,63);
+    color: #fff;
     font-weight: bold;
+     box-shadow: 0px 2px 4px #ccc;
 }
 
+.tab-item .icon {
+    margin-top: 5%;
+}
 
