@@ -68,8 +68,7 @@
 }
 
 .tab-item .icon {
-    display: block;
-    margin: 7%;
+    margin-top: 8%;
 }
 
 /***************************************************
@@ -104,7 +103,7 @@
 
 #activityFeedBtn {
     width: 60%;
-    background-color: #96d7e5;
+    background-color: #6fc8dc;
     margin-left: 20%;
     margin-right: 20%;
     color: #fff;
@@ -127,6 +126,7 @@ ion-popover-view .list {
 }
 
 .swipeCard {
+    margin-top: 3%;
     width: 94%;
     margin-left: 3%;
     margin-right: 3%;
@@ -142,8 +142,51 @@ ion-popover-view .list {
 }
 
 .swipeCardP-Tag {
-    text-align: center;
     font-size: 1.5em;
+}
+
+#activityListCard {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    box-shadow: 0px 2px 4px #ccc;
+}
+
+#activityListCard p {
+    padding-top: 2%;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+
+#activityListCard-People {
+    font-size: 1em;
+    font-weight: bold;
+    color: #ff3b3f;
+    padding-left: 4%;
+}
+
+#activityListCard-PeopleIcon {
+    font-size: 1em;
+    font-weight: bold;
+    color: #ff3b3f;
+    padding-left: 1%;
+}
+
+#activityListCard2 {
+    padding-left: 2%;
+    padding-right: 1%;
+    padding-top: 2%;
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    box-shadow: 0px 2px 4px #ccc;
+}
+
+#cardP1 {
+    font-size: 1.6em;
+}
+
+#cardAge {
+    font-weight: bold;
 }
 
 /***************************************************
@@ -177,9 +220,5 @@ ion-popover-view .list {
     color: #fff;
     font-weight: bold;
      box-shadow: 0px 2px 4px #ccc;
-}
-
-.tab-item .icon {
-    margin-top: 5%;
 }
 
