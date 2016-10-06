@@ -18,34 +18,25 @@
         vm.currentCard = [];
         vm.user = {};
         vm.usersByActivity = [];
-        // var uid = firebase.auth().currentUser.uid;
+        
         var uid = $sessionStorage.uid;
         console.log(uid);
         pullUsersByActivity();
 
         //reminder used $scope.user to make scope available in ionic popover
 
-        // FirebaseFactory.returnUserFromDB(firebase.auth().currentUser.uid).then(
-        //     function(user) {
-        //         if(user) {
-        //             $scope.user = user;
-        //         } else {
-        //             toastr.error("No user logged in.");
-        //         }
-
-        //     }
-        // )
+       
 
         function intiateDeck(users) {
             vm.usersByActivity = Object.keys(users).map(function(property) {
                         return {key: property, value: users[property] };
             });
 
-            console.log(vm.usersByActivity)
+            
 
             vm.currentCard.push( vm.usersByActivity.pop());
 
-                    console.log(vm.currentCard);
+                    
 
 
         }
@@ -69,8 +60,7 @@
                             } else {
                                 users = snapshot.val();
 
-                                console.log('all activities ' + users);
-                                console.log(users);
+                                
                                 intiateDeck(users);
                             }
                         })
@@ -90,24 +80,13 @@
                             } else {
                                 //return value from snapshot
                                 users = snapshot.val();
-                                console.log('users from one activity group ' + users);
-                                console.log(users);
+                                
 
                                 intiateDeck(users);
                             }
                         })
                     } //end else
-                    //turn object into array
-                    // vm.usersByActivity = Object.keys(users).map(function(property) {
-                    //     return {key: property, value: users[property] };
-                    // });
-
-                    // console.log(vm.usersByActivity);
-
-                    // //take item from Users with like activities array and push in to current card.
-                    // vm.currentCard.push( vm.usersByActivity.pop());
-
-                    // console.log(vm.currentCard);
+                   
 
             })
         }
@@ -119,7 +98,7 @@
         function cardDestroyed(index) {
             vm.currentCard.splice(index, 1);
 
-            console.log('card destroyed ' + vm.currentCard);
+            
 
             if(vm.usersByActivity.length > 0) {
                 vm.currentCard.push( vm.usersByActivity.pop());
@@ -129,8 +108,40 @@
             
         }
 
-        function cardSwiped(id) {
-            console.log("Implement send a notification.");
+        function cardSwiped(card) {
+            //reference to notifications/receiverId/senderId
+            var ref = firebase.database().ref('notifications/' + card.key + '/' + uid)
+
+
+            //call firebase factory to see if there is already an active request
+            FirebaseFactory.multipleNotificationsFromUIDExists(ref).then(
+                function(exists) {
+                    if(exists) {
+                        //if notification already exists send error message
+                       
+                        toastr.error('There is already an active request pending.')
+                    } else {
+                         if (card.key === uid) {
+                            toastr.error("You don't have to use whiim to play with your self : (")
+                            return;
+                        }
+                      
+                        //set active true and time stamp
+                        //grab ref to notifications/card.value.userid
+                        var notification = {
+                             "active": true,
+                            "timeStamp": Date.now(),
+                            "displayName": $scope.user.displayName
+                        };
+                        ref.set(notification);
+                        
+                        toastr.success("Notification sent to " + card.value.displayName);
+                    } //end else
+                }
+            )
+
+
+          
         }
 
 
