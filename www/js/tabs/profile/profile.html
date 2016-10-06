@@ -1,5 +1,5 @@
 <ion-view title="Profile Page" hide-nav-bar="true" id="page14">
-    <ion-content class="manual-ios-statusbar-padding">
+    <ion-content class="manual-ios-statusbar-padding" id="profilePage">
         <div class="defaultHeader">
             <label class="deafultHeaderTitle">WHiiM</label>
             <button class="messagesHeaderBtn button icon ion-chatboxes"></button>
@@ -9,11 +9,11 @@
             
         </div>
 
-        <div class="about-me-div row">
+        <div class="about-me-div text-box row">
             <div class="col">
             <label class="item item-input" id="profilePage-textarea5">
                 <span class="input-label">About:
-                 <textarea ng-model="profile.user.aboutMe" placeholder=""></textarea></span>
+                 <input class="item" type="text" ng-model="profile.user.aboutMe" placeholder=""></input></span>
             </label>
             </div>
         </div>
