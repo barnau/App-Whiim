@@ -24,7 +24,9 @@
             .state('tabs', {
                 url: '/tabs',
                 templateUrl: 'js/tabs/tabs.html',
-                abstract: true
+                abstract: true,
+                controller: 'TabsController'
+
             })
 
             .state('tabs.dashboard', {
@@ -69,6 +71,28 @@
                 }
             });
 
+        })
+
+        .controller('TabsController', function($scope, $rootScope, FirebaseFactory, $firebaseArray) {
+            //listen to event fired when user logs in
+            $rootScope.$on('userLoggedIn', function(event, args) {
+                console.log(args.uid);
+
+                var notificationsRef = firebase.database().ref('notifications/' + args.uid)
+                $scope.notifications = $firebaseArray(notificationsRef);
+                $scope.notifications.$loaded().then(function(notifications) {
+                    $scope.num = notifications.length
+                })
+                
+                notificationsRef.on('child_added', function(data) {
+                   console.log('below data from child added');
+                    $scope.notifications.$loaded().then(function(notifications) {
+                        $scope.num = notifications.length
+                    })
+                   
+                });
+
+             })
         })
         .run(function appRun($ionicPlatform) {
             $ionicPlatform.ready(function() {

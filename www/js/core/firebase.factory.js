@@ -5,10 +5,18 @@
         .module('app')
         .factory('FirebaseFactory', FirebaseFactory);
 
-    FirebaseFactory.$inject = ['$http', 'toastr', '$q', '$state', '$sessionStorage'];
+    FirebaseFactory.$inject = ['$http', 'toastr', '$q', '$state', '$sessionStorage', '$rootScope'];
+
+    
+
+   
 
     /* @ngInject */
-    function FirebaseFactory($http, toastr, $q, $state, $sessionStorage) {
+    function FirebaseFactory($http, toastr, $q, $state, $sessionStorage, $rootScope) {
+
+        
+
+
         var service = {
             signUp: signUp,
             logIn: logIn,
@@ -120,6 +128,9 @@
                 .then(function(result) {
                     
                     $sessionStorage.uid = result.user.uid;
+                    console.log('right befor eemit')
+                    $rootScope.$emit('userLoggedIn', {uid: result.user.uid});
+
                     console.log( $sessionStorage.uid);
                     userProfileExists(result.user.uid).then(function(userProfileExists) {
                         if (!userProfileExists) {
