@@ -2,20 +2,27 @@
     <ion-nav-back-button class="button-icon ion-arrow-left-c">
     </ion-nav-back-button>
 </ion-nav-bar> -->
-
-<ion-view view-title="stuff">
+<div ng-controller="TabsController as tabs">
+<ion-view view-title="stuff" >
     <ion-tabs class="tabs-stable tabs-icon-top" id="tabsController-tabs1">
-        <ion-tab title="" icon="icon ion-ios-home" href="#/tabs/home" id="tabsController-home">
+        <ion-tab title="" ng-click="SayHello()" icon="icon ion-ios-home" href="#/tabs/home" id="tabsController-home">
             <ion-nav-view name="dashboard"></ion-nav-view>
         </ion-tab>
         <ion-tab class="" icon="ion-android-add" href="#/tabs/create" id="tabsController-create">
             <ion-nav-view name="create"></ion-nav-view>
         </ion-tab>
+<<<<<<< HEAD
         <ion-tab class="" icon="ion-android-notifications" href="#/tabs/notifications" id="tabsController-notifications">
+=======
+        <ion-tab title="{{num}}" icon="ion-android-notifications" href="#/tabs/notifications" id="tabsController-notifications">
+>>>>>>> NumberOfNotificationsOnTabBar
             <ion-nav-view name="notifications"></ion-nav-view>
+        
+        
         </ion-tab>
         <ion-tab class="" icon="ion-ios-person" href="#/tabs/profile" id="tabsController-profile">
             <ion-nav-view name="profile"></ion-nav-view>
         </ion-tab>
     </ion-tabs>
 </ion-view>
+</div>
