@@ -5,17 +5,15 @@
 <div ng-controller="TabsController as tabs">
 <ion-view view-title="stuff" >
     <ion-tabs class="tabs-stable tabs-icon-top" id="tabsController-tabs1">
-        <ion-tab title="" ng-click="SayHello()" icon="icon ion-ios-home" href="#/tabs/home" id="tabsController-home">
+        <ion-tab title="" icon="icon ion-ios-home" href="#/tabs/home" id="tabsController-home">
             <ion-nav-view name="dashboard"></ion-nav-view>
         </ion-tab>
         <ion-tab class="" icon="ion-android-add" href="#/tabs/create" id="tabsController-create">
             <ion-nav-view name="create"></ion-nav-view>
         </ion-tab>
-<<<<<<< HEAD
-        <ion-tab class="" icon="ion-android-notifications" href="#/tabs/notifications" id="tabsController-notifications">
-=======
+
         <ion-tab title="{{num}}" icon="ion-android-notifications" href="#/tabs/notifications" id="tabsController-notifications">
->>>>>>> NumberOfNotificationsOnTabBar
+
             <ion-nav-view name="notifications"></ion-nav-view>
         
         
