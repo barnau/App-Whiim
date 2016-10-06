@@ -11,10 +11,10 @@
 
             
             <td-cards>
-              <td-card class="list card" ng-repeat="card in dashboard.currentCard" on-destroy="dashboard.cardDestroyed($index)" on-swipe-right="dashboard.cardSwiped($index)">
-
-                 <img ng-src="{{card.value.photoURL}}" width="60px">   
-                <label>{{card.value.displayName}}</label>
+              <td-card class="swipeCard list card" ng-repeat="card in dashboard.currentCard" on-destroy="dashboard.cardDestroyed($index)" on-swipe-right="dashboard.cardSwiped($index)">
+                <p class="swipeCardP-Tag">"Activity Will Go Here"</p>
+                    <img ng-src="{{card.value.photoURL}}" class="swipeCard-img">   
+                <p class="swipeCardP-Tag">{{card.value.displayName}}</p>
               </td-card>
             </td-cards>
             
