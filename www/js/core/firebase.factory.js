@@ -14,6 +14,12 @@
     /* @ngInject */
     function FirebaseFactory($http, toastr, $q, $state, $sessionStorage, $rootScope) {
 
+        // $rootScope.$on('userLoggedIn', function(event, args) {
+        //         console.log(args.uid);
+
+
+        //      });
+
         
 
 
@@ -128,7 +134,7 @@
                 .then(function(result) {
                     
                     $sessionStorage.uid = result.user.uid;
-                    console.log('right befor eemit')
+                    console.log('right befor eemit');
                     $rootScope.$emit('userLoggedIn', {uid: result.user.uid});
 
                     console.log( $sessionStorage.uid);

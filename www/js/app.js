@@ -73,26 +73,53 @@
 
         })
 
-        .controller('TabsController', function($scope, $rootScope, FirebaseFactory, $firebaseArray) {
+        .controller('TabsController', function($scope, $rootScope, FirebaseFactory, $firebaseArray, toastr, $sessionStorage) {
             //listen to event fired when user logs in
-            $rootScope.$on('userLoggedIn', function(event, args) {
-                console.log(args.uid);
 
-                var notificationsRef = firebase.database().ref('notifications/' + args.uid)
-                $scope.notifications = $firebaseArray(notificationsRef);
-                $scope.notifications.$loaded().then(function(notifications) {
+            var notificationsRef = firebase.database().ref('notifications/' + $sessionStorage.uid);
+            $scope.notifications = $firebaseArray(notificationsRef);
+            $scope.notifications.$loaded().then(function(notifications) {
                     $scope.num = notifications.length
-                })
-                
+            });
+
+            setTimeout(function() {
+                alert('time out works')
                 notificationsRef.on('child_added', function(data) {
                    console.log('below data from child added');
                     $scope.notifications.$loaded().then(function(notifications) {
-                        $scope.num = notifications.length
+                        $scope.num = notifications.length;
+                         console.log(notifications);
+                        toastr.success('New notification from');
                     })
                    
-                });
+            });
 
-             })
+            }, 20000)
+
+            
+
+            // $rootScope.$on('userLoggedIn', function(event, args) {
+            //     console.log(args.uid);
+
+               
+            //     $scope.notifications.$loaded().then(function(notifications) {
+            //         $scope.num = notifications.length
+            //     })
+                
+                
+
+            //  })
+
+            // var notificationsRef = firebase.database().ref('notifications/' + $sessionStorage.uid);
+            // notificationsRef.on('child_added', function(data) {
+            //        console.log('below data from child added');
+            //         $scope.notifications.$loaded().then(function(notifications) {
+            //             $scope.num = notifications.length;
+            //              console.log(notifications);
+            //             toastr.success('New notification from '  )
+            //         })
+                   
+            // });
         })
         .run(function appRun($ionicPlatform) {
             $ionicPlatform.ready(function() {
