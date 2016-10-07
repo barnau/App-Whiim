@@ -12,9 +12,13 @@
             
             <td-cards>
               <td-card class="swipeCard list card" ng-repeat="card in dashboard.currentCard" on-destroy="dashboard.cardDestroyed($index)" on-swipe-right="dashboard.cardSwiped($index)">
-                <p class="swipeCardP-Tag">"Activity Will Go Here"</p>
+                <td-card id="activityListCard" class="list card">
+                  <p>"Activity Will Go Here Okay"<label id="activityListCard-People">3<i id="activityListCard-PeopleIcon" class="icon ion-person-stalker"></i></label></p>
+                </td-card>
                     <img ng-src="{{card.value.photoURL}}" class="swipeCard-img">   
-                <p class="swipeCardP-Tag">{{card.value.displayName}}</p>
+                <td-card id="activityListCard2" class="list card">
+                  <p id="cardP1">{{card.value.displayName}}, <label id="cardAge">AGE</label></p>
+                </td-card>
               </td-card>
             </td-cards>
             
