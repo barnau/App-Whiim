@@ -12,27 +12,28 @@
 
         <div class="row">
           <label class="col item item-input">
-            <input type="text" placeholder="Event Name">
+            <input type="text" placeholder="Event Name" maxlength="50" ng-model="">
           </label>
         </div>
         <div id="create-event-text" class="row">
           <label class="col item item-input">
-            <textarea placeholder="Description"></textarea>
+            <textarea placeholder="Description" maxlength="200" ng-model=""></textarea>
           </label>
         </div>
         
+        
         <!-- buttons -->
-        <div class="row">
-            <div class="col">
-                <button class="button" ng-click="openPopover($event)">{{event.activity}}</button>
+            <div class="row">
+                <div class="col">
+                    <button class="button button-block select-num-btn" ng-click="profile.save()"><i class="ion-person-stalker"> # of people</i></button>
+                </div>
+                <div class="col">
+                    <button class="button button-block create-activity-btn" ng-click="popover.show()"> Category</button>
+                </div>
             </div>
-            <div class="col">
-                <button class="button">#</button>
+            <div class="row">
+                <button class="button button-block post-event-btn" ng-click="createEvent()">Post Event <i class="cust-icon ion-paper-airplane"></i></button>
             </div>
-            <div clas="col">
-                <button class="button" ng-click="createEvent()">Post</button>
-            </div>
-        </div>
         
     
         </form>

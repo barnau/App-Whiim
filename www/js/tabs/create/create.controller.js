@@ -34,6 +34,12 @@
             return firebase.database().ref().update(eventUpdates);
         }
 
+        $ionicPopover.fromTemplateUrl('js/tabs/create/create.popover.html', {
+             scope: $scope,
+         }).then(function(popover) {
+             $scope.popover = popover;
+         });
+
 
 
 
