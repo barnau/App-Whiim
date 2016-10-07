@@ -1,24 +1,41 @@
-<ion-view title="Create Activity" hide-nav-bar="true" id="page11" style="background-color:#44BBF8;">
-    <ion-content padding="true" class="manual-ios-statusbar-padding">
-        <div class="spacer" style="width: 300.023px; height: 7.98843px;"></div>
-        <h1 id="createActivity-heading1" style="color:#FFFFFF;font-weight:300;text-align:center;">POST ACTIVITY</h1>
-        <div class="spacer" style="width: 300.012px; height: 54.9792px;"></div>
-        <div id="createActivity-markdown1" style="color:#FFFFFF;text-align:center;">
-            <p>"WHAT DO YOU FEEL LIKE DOING TODAY" (THIS WILL CHANGE)</p>
+<ion-view title="Create Activity" hide-nav-bar="true" id="page11">
+    <ion-content class="manual-ios-statusbar-padding">
+        <div class="defaultHeader">
+            <label class="deafultHeaderTitle">WHiiM</label>
+            <button class="messagesHeaderBtn button icon ion-chatboxes"></button>
         </div>
-        <form id="createActivity-form15" class="list">
-            <label class="item item-input" id="createActivity-textarea2">
-                <span class="input-label">Text</span><textarea placeholder="ACTIVITY"></textarea>
-            </label>
-            <label class="item item-input" id="createActivity-textarea3">
-                <span class="input-label">Text</span><textarea placeholder="DESCRIPTION"></textarea>
-            </label>
-            <div class="spacer" style="width: 300.023px; height: 28.9884px;"></div>
-            <label class="item item-select" id="createActivity-select2">
-                <span class="input-label">CHOOSE CATEGORY</span>
-                <select></select>
-            </label>
+
+        <div>
+            <h1 id="create-event-header" class="row">Create a New Event</h1>
+            <p class="row">What do you feel like doing?</p>
+        </div>
+
+        <div class="row">
+          <label class="col item item-input">
+            <input type="text" placeholder="Event Name" maxlength="50" ng-model="create.newEvent.name">
+          </label>
+        </div>
+        <div id="create-event-text" class="row">
+          <label class="col item item-input">
+            <textarea placeholder="Description" maxlength="200" ng-model="create.newEvent.description"></textarea>
+          </label>
+        </div>
+        
+        
+        <!-- buttons -->
+            <div class="row">
+                <div class="col">
+                    <button class="button button-block select-num-btn" ng-click="profile.save()"><i class="ion-person-stalker"> # of people</i></button>
+                </div>
+                <div class="col">
+                    <button class="button button-block create-activity-btn" ng-click="popover.show()"> Category</button>
+                </div>
+            </div>
+            <div class="row">
+                <button class="button button-block post-event-btn" ng-click="create.createEvent(create.newEvent)">Post Event <i class="cust-icon ion-paper-airplane"></i></button>
+            </div>
+        
+    
         </form>
-        <button id="createActivity-button19" class="button button-positive  button-block icon-right ion-android-checkbox">SUBMIT</button>
     </ion-content>
 </ion-view>

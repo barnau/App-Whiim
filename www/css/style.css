@@ -64,7 +64,11 @@
 .tab-item.tab-item-active, .tab-item.active, .tab-item.activated {    
     opacity: 1;
     color: #ff3b3f;
-    box-shadow: 0px 2px 4px #ccc;
+    box-shadow: 0 1em 2em #ccc;
+}
+
+.tab-item .icon {
+    margin-top: 8%;
 }
 
 /***************************************************
@@ -72,7 +76,7 @@
 ***************************************************/
 #defaultLoginImg {
     width: 90%; 
-    height: auto;
+    height: 90%;
     display: block; 
     margin-left: auto; 
     margin-right: auto;
@@ -98,20 +102,19 @@
 
 
 #activityFeedBtn {
-    width: 90%;
-    background-color: #CAEBF2;
-    margin-left: 5%;
-    margin-right: 5%;
+    width: 60%;
+    background-color: #6fc8dc;
+    margin-left: 20%;
+    margin-right: 20%;
     color: #fff;
-    font-size: 1.7em;
-    box-shadow: 0px 2px 4px #ccc;
+    font-size: 1.5em;
+    font-weight: bold;
+    box-shadow: 0px 2px 6px #ccc;
+
 }
 
 ion-popover-view .list {
     text-align: center;
-}
-
-ion-tab {
 }
 
 
@@ -120,6 +123,70 @@ ion-tab {
 ***************************************************/
 #dashboardHtml {
     background-color: #EFEFEF;
+}
+
+.swipeCard {
+    margin-top: 3%;
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+    box-shadow: 0 3px 6px #ccc;
+    background-color: none;
+}
+
+.swipeCard-img {
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    height: auto;
+}
+
+.swipeCardP-Tag {
+    font-size: 1.5em;
+}
+
+#activityListCard {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    box-shadow: 0px 2px 4px #ccc;
+}
+
+#activityListCard p {
+    padding-top: 2%;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+
+#activityListCard-People {
+    font-size: 1em;
+    font-weight: bold;
+    color: #ff3b3f;
+    padding-left: 4%;
+}
+
+#activityListCard-PeopleIcon {
+    font-size: 1em;
+    font-weight: bold;
+    color: #ff3b3f;
+    padding-left: 1%;
+}
+
+#activityListCard2 {
+    padding-left: 2%;
+    padding-right: 1%;
+    padding-top: 2%;
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    box-shadow: 0px 2px 4px #ccc;
+}
+
+#cardP1 {
+    font-size: 1.6em;
+}
+
+#cardAge {
+    font-weight: bold;
 }
 
 /***************************************************
@@ -141,6 +208,8 @@ ion-tab {
     border: 4px solid #96D7E5;
 }
 
+.select-num-btn,
+.create-activity-btn,
 .save-btn {
     background-color: #96D7E5;
     color: #fff;
@@ -148,6 +217,7 @@ ion-tab {
     box-shadow: 0px 2px 4px #ccc;
 }
 
+.post-event-btn,
 .logOff-btn {
     background-color: rgb(255,59,63);
     color: #fff;
@@ -155,11 +225,23 @@ ion-tab {
      box-shadow: 0px 2px 4px #ccc;
 }
 
+
 .tab-item .icon {
     margin-top: 5%;
 }
 
 
+/***************************************************
+                Create Event Page
+***************************************************/
 
+#create-event-text {
+    margin-top: 2%; 
+    height: 8em;
+}
+
+.cust-icon {
+    font-size: 2em;
+}
 
 

@@ -53,7 +53,7 @@
                 $scope.user = user
                 var users = {};
 
-                    if(user.activity === 'any') {
+                    if(user.activity === 'Anything Goes!') {
                         var ref = firebase.database().ref('/users').once('value', function(snapshot) {
                             if(snapshot.val() === null) {
                                 console.log('error in returning all users from dashboard controller');

@@ -121,6 +121,7 @@
                    
             // });
         })
+        
         .run(function appRun($ionicPlatform) {
             $ionicPlatform.ready(function() {
                 if (window.cordova && window.cordova.plugins.Keyboard) {
