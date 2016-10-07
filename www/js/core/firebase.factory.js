@@ -5,14 +5,14 @@
         .module('app')
         .factory('FirebaseFactory', FirebaseFactory);
 
-    FirebaseFactory.$inject = ['$http', 'toastr', '$q', '$state', '$sessionStorage', '$rootScope'];
+    FirebaseFactory.$inject = ['$http', 'toastr', '$q', '$state', '$sessionStorage', '$rootScope', '$cordovaOauth'];
 
     
 
    
 
     /* @ngInject */
-    function FirebaseFactory($http, toastr, $q, $state, $sessionStorage, $rootScope) {
+    function FirebaseFactory($http, toastr, $q, $state, $sessionStorage, $rootScope, $cordovaOauth) {
 
         // $rootScope.$on('userLoggedIn', function(event, args) {
         //         console.log(args.uid);

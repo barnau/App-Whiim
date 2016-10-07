@@ -9,6 +9,7 @@
     "firebase": "^3.4.1",
     "angularfire": "^2.0.2",
     "ionic-ion-tinder-cards": "ionic-contrib-tinder-cards#*",
-    "ngstorage": "^0.3.11"
+    "ngstorage": "^0.3.11",
+    "ng-cordova-oauth": "^0.2.10"
   }
 }
