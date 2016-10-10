@@ -13,10 +13,10 @@
 	            <ion-item>
 	            	<div class="row">
 					<!-- <img class="profile-photo" ng-src="{{notifs.user.photoURL}}" width="100%" 							height="auto" style="display: block; margin-left: auto; margin-right: 						auto;" ng-click="popover.show($event)"> -->
-		                <p ng-click="popover.show($event)" class="col-60"><label class="notificationCard-userName">{{note.displayName}}</label> wants to join!</p>
+		                <p class="col-80"><a ng-click="popover.show($event); setRequestingId(note.$id)" class="notificationCard-userName">{{note.displayName}}</a> wants to join!</p>
 		                <div id="notificationCard-icons">
-			                <i id="declineCardIcon" class="col-20 icon ion-close-circled" ng-click="notifs.remove($index)"></i>
-			                <i id="acceptCardIcon" class="col-20 icon ion-checkmark-circled" ng-click="notifs.add(note)"></i>
+			                <i id="declineCardIcon" class="col-10 icon ion-close-circled" ng-click="notifs.remove($index)"></i>
+			                <i id="acceptCardIcon" class="col-10 icon ion-checkmark-circled" ng-click="notifs.add(note)"></i>
 			            </div>
 		            </div>
 	            </ion-item>

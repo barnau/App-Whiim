@@ -21,6 +21,8 @@
         var defaultNumUsers = 2;
         vm.notifications = $firebaseArray(notifsRef);
         var loggedInUser = firebase.auth()
+        
+
 
          function remove(i) {
             alert('remove');
@@ -30,6 +32,7 @@
                 }
             )
         }
+
 
         function add(note) {
             var requestingUserName = note.displayName;
@@ -58,11 +61,6 @@
            updates['groups/users/' + newGroupKey + '/' + requestingUserId  ] = { name: requestingUserName};
            updates['groups/users/' + newGroupKey + '/' + acceptingUserId  ] = {name: acceptingUserName};
 
-
-
-       
-
-
            updates['users/' + requestingUserId + '/groups/' + newGroupKey ] = { title: title, key: newGroupKey };
            updates['users/' + acceptingUserId + '/groups/' + newGroupKey ] = { title: title, key: newGroupKey };
            
@@ -77,12 +75,27 @@
                 }
             )
 
-
+           
             
 
 
             
             // console.log(newGroupKey);
+        }
+
+        $ionicPopover.fromTemplateUrl('js/tabs/notifications/notifications.popover.html', {
+                 scope: $scope,
+            }).then(function(popover) {
+                 $scope.popover = popover;
+            });
+
+        $scope.setRequestingId = function(id) {
+            FirebaseFactory.returnUserFromDB(id).then(function(requestor) {
+
+                $scope.requestor = requestor;
+                console.log($scope.requestor);
+            })
+            
         }
 
 
