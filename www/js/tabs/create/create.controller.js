@@ -15,6 +15,7 @@
         vm.eventName = '';
         vm.requiredUsers = 0;
         vm.description = ''; 
+        vm.category = '';
         vm.createEvent = createEvent;
         vm.uid = $sessionStorage.uid; 
 
@@ -22,30 +23,31 @@
         
 
         function createEvent(newEvent) {
-            console.log(newEvent);
+            if (newEvent.name == null || newEvent.description == null){
+                toastr.error("Please provide both a name & description for this event!");
+            } else {
             var postEvent = {
                 creator: vm.uid,  
                 name: newEvent.name, 
                 description: newEvent.description, 
-                numPeople : vm.requiredUsers, 
+                requiredUsers : vm.requiredUsers, 
+                category : vm.category,
                 timeStamp: Date.now()
                 };
+            console.log(newEvent);
+            toastr.success("New Event Posted!");
+            }
+
             // Get a key for a new event
             var newEventKey = firebase.database().ref().child('events').push().key;
             
-            // Write the new post's data simultaneously in the posts list and the user's post list.
+            // Write the new post's data simultaneously to the database in 2 places
             var eventUpdates = {};
             eventUpdates['/events/' + newEventKey] = postEvent;
             eventUpdates['/users/' + vm.uid + '/user-events/' + newEventKey] = postEvent;
 
             return firebase.database().ref().update(eventUpdates);
         }
-
-        $ionicPopover.fromTemplateUrl('js/tabs/create/create.popover.html', {
-             scope: $scope,
-         }).then(function(popover) {
-             $scope.popover = popover;
-         });
 
 
 

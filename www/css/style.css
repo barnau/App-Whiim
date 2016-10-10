@@ -235,13 +235,27 @@ ion-popover-view .list {
                 Create Event Page
 ***************************************************/
 
+#createPage{
+    background-color: #DFF3F7;
+}
+
 #create-event-text {
     margin-top: 2%; 
     height: 8em;
 }
 
+.createInput{
+    box-shadow: 0px 2px 4px #96D7E5;
+}
+
+.create-label {
+    color: v;
+    text-shadow: 0px 2px 4px;
+}
 .cust-icon {
     font-size: 2em;
 }
+
+
 
 
