@@ -277,12 +277,13 @@ output{
 }
 
 #acceptCardIcon {
-    margin-right: 11%;
     color: #4caf50;
+    font-size: 1.6em;
 }
 
 #declineCardIcon {
     color: #ff3b3f;
+    font-size: 1.6em;
 }
 
 .notificationCard {
@@ -294,13 +295,17 @@ output{
 }
 
 .notificationCard p {
-    margin-top: 2%;
-    text-align: center;
+    margin-top: 3%;
+    text-align: left;
 }
 
 .notificationCard-userName {
     font-weight: bold;
 }
+
+/*#notificationCard-icons {
+    float: right;
+}*/
 
 #notificationsPopover {
     position: absolute;

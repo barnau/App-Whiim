@@ -30,12 +30,14 @@
         </div>
         <td-cards>
         	<td-card ng-repeat="note in notifs.notifications" class="notificationCard list card">
-	            <ion-item class="item-avatar item-icon-right" id="notifications-list-item13">
-	                <div class="rows">
+	            <ion-item>
+	            	<div class="row">
 					<!-- <img class="profile-photo" ng-src="{{notifs.user.photoURL}}" width="100%" 							height="auto" style="display: block; margin-left: auto; margin-right: 						auto;" ng-click="popover.show($event)"> -->
-		                <p><label class="notificationCard-userName">{{note.displayName}}</label> wants to join!</p>
-		                <i id="declineCardIcon" class="col-20 icon ion-close-circled" ng-click="notifs.remove($index)"></i>
-		                <i id="acceptCardIcon" class="col-20 icon ion-checkmark-circled" ng-click="notifs.add(note)"></i>
+		                <p ng-click="popover.show($event)" class="col-60"><label class="notificationCard-userName">{{note.displayName}}</label> wants to join!</p>
+		                <div id="notificationCard-icons">
+			                <i id="declineCardIcon" class="col-20 icon ion-close-circled" ng-click="notifs.remove($index)"></i>
+			                <i id="acceptCardIcon" class="col-20 icon ion-checkmark-circled" ng-click="notifs.add(note)"></i>
+			            </div>
 		            </div>
 	            </ion-item>
 	        </td-card>
