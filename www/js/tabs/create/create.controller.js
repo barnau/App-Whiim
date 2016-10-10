@@ -18,6 +18,9 @@
         vm.createEvent = createEvent;
         vm.uid = $sessionStorage.uid; 
         $scope.newEvent = {};
+        var userInfo = {};
+
+        activate();
 
 
         function createEvent() {
@@ -25,7 +28,7 @@
                 toastr.error('Please enter a name and description for your event!');
             } else {
 
-            console.log($scope.newEvent);
+            console.log(userInfo);
             // var postEvent = {
             //     creator: $scope.newEvent.uid,  
             //     name: $scope.newEvent.name, 
@@ -35,8 +38,10 @@
             //     timeStamp: Date.now()
             //     };
 
-            $scope.newEvent.creatorId = $sessionStorage.uid;
+            $scope.newEvent.ownerId = $sessionStorage.uid;
             $scope.newEvent.timeStamp = Date.now();
+            $scope.newEvent.photoURL = userInfo.photoURL;
+            $scope.newEvent.ownerName = userInfo.displayName;
             console.log($scope.newEvent);
             
 
@@ -73,11 +78,14 @@
 
 
 
-        activate();
+        
 
         ////////////////
 
         function activate() {
+            FirebaseFactory.returnUserFromDB($sessionStorage.uid).then(function(user) {
+                userInfo = user;
+            });
         
         }
     }

@@ -5,91 +5,117 @@
         .module('app')
         .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ['FirebaseFactory', '$stateParams', '$state', '$scope', '$ionicPopover', '$sessionStorage', 'toastr'];
+    DashboardController.$inject = ['FirebaseFactory', '$stateParams', '$state', '$scope', '$ionicPopover', '$sessionStorage', 'toastr', '$firebaseArray'];
 
     /* @ngInject */
-    function DashboardController(FirebaseFactory, $stateParams, $state, $scope, $ionicPopover, $sessionStorage, toastr) {
+    function DashboardController(FirebaseFactory, $stateParams, $state, $scope, $ionicPopover, $sessionStorage, toastr, $firebaseArray) {
         var vm = this;
         vm.title = 'DashboardController';
         vm.test = 'this is a test from DashboardController';
         vm.logOff = logOff;
+        vm.category = '';
         vm.cardDestroyed = cardDestroyed;
         vm.cardSwiped = cardSwiped;
         vm.currentCard = [];
-        vm.user = {};
-        vm.usersByActivity = [];
+        // vm.user = {};
+        // vm.pullEventsByCategory = [];
+        vm.pullEventsByCategory = pullEventsByCategory;
+        vm.events = [];
         
         var uid = $sessionStorage.uid;
         console.log(uid);
-        pullUsersByActivity();
+        activate();
+        pullEventsByCategory();
 
         //reminder used $scope.user to make scope available in ionic popover
 
        
 
-        function intiateDeck(users) {
-            vm.usersByActivity = Object.keys(users).map(function(property) {
-                        return {key: property, value: users[property] };
+        function intiateDeck(events) {
+            vm.eventsByCategory = Object.keys(events).map(function(property) {
+                        return {key: property, value: events[property] };
             });
-
+            console.log('hello');
             
 
-            vm.currentCard.push( vm.usersByActivity.pop());
+            vm.currentCard.push( vm.eventsByCategory.pop());
 
                     
 
 
         }
 
+        function pullEventsByCategory() {
 
-        
-        function pullUsersByActivity() {
             vm.currentCard = [];
             
+            var events = {};
+            var ref = {};
+            if(vm.category === 'Select an Activity') {
+                ref = firebase.database().ref('/events');
+            } else {
+                 ref = firebase.database().ref('/events').orderByChild('category').equalTo(vm.category);
+            }
+           
+            ref.once('value', function(snapshot) {
+                if(snapshot.val() === null) {
+                    console.log('Error opening events in category');
+                } else {
+                    events = snapshot.val();
+
+                    intiateDeck(events);
+                }
+            });
+
+        }
+        
+        // function pullUsersByActivity() {
+        //     vm.currentCard = [];
+            
             
 
-            FirebaseFactory.returnUserFromDB(uid).then(function(user) {
+        //     FirebaseFactory.returnUserFromDB(uid).then(function(user) {
 
-                $scope.user = user
-                var users = {};
+        //         $scope.user = user
+        //         var users = {};
 
-                    if(user.activity === 'Anything Goes!') {
-                        var ref = firebase.database().ref('/users').once('value', function(snapshot) {
-                            if(snapshot.val() === null) {
-                                console.log('error in returning all users from dashboard controller');
-                            } else {
-                                users = snapshot.val();
+        //             if(user.activity === 'Anything Goes!') {
+        //                 var ref = firebase.database().ref('/users').once('value', function(snapshot) {
+        //                     if(snapshot.val() === null) {
+        //                         console.log('error in returning all users from dashboard controller');
+        //                     } else {
+        //                         users = snapshot.val();
 
                                 
-                                intiateDeck(users);
-                            }
-                        })
+        //                         intiateDeck(users);
+        //                     }
+        //                 })
 
-                    } else {
+        //             } else {
 
 
                         
-                        //query database to find all user with same activity selected
-                        var ref = firebase.database().ref('/users').orderByChild('activity').equalTo(user.activity);
-                        ref.once('value', function(snapshot) {
-                            if(snapshot.val() === null) {
+        //                 //query database to find all user with same activity selected
+        //                 var ref = firebase.database().ref('/users').orderByChild('activity').equalTo(user.activity);
+        //                 ref.once('value', function(snapshot) {
+        //                     if(snapshot.val() === null) {
                                 
                                 
-                                console.log('No one found');
+        //                         console.log('No one found');
                                 
-                            } else {
-                                //return value from snapshot
-                                users = snapshot.val();
+        //                     } else {
+        //                         //return value from snapshot
+        //                         users = snapshot.val();
                                 
 
-                                intiateDeck(users);
-                            }
-                        })
-                    } //end else
+        //                         intiateDeck(users);
+        //                     }
+        //                 })
+        //             } //end else
                    
 
-            })
-        }
+        //     })
+        // }
 
        
 
@@ -100,8 +126,8 @@
 
             
 
-            if(vm.usersByActivity.length > 0) {
-                vm.currentCard.push( vm.usersByActivity.pop());
+            if(vm.eventsByCategory.length > 0) {
+                vm.currentCard.push( vm.eventsByCategory.pop());
             } else {
                 alert('Out of cards');
             }
@@ -133,11 +159,11 @@
                         var notification = {
                              "active": true,
                             "timeStamp": Date.now(),
-                            "displayName": $scope.user.displayName
+                            "ownerName": card.value.ownerName
                         };
                         ref.set(notification);
                         
-                        toastr.success("Notification sent to " + card.value.displayName);
+                        toastr.success("Notification sent to " + card.value.ownerName);
                     } //end else
                 }
             )
@@ -155,18 +181,11 @@
              $scope.popover = popover;
          });
 
-         $scope.setActivity = function(activity) {
+         $scope.setCategory = function(category) {
             
-            
-            
-            $scope.user.activity = activity;
-            
-            vm.DataBaseRefToLoggedInUser = firebase.database().ref('users/' + uid);
-            vm.DataBaseRefToLoggedInUser.set($scope.user);
+            vm.category = category;
 
-            
-
-            pullUsersByActivity();
+            pullEventsByCategory();
 
          };
 
@@ -187,7 +206,7 @@
         ////////////////
 
         function activate() {
-
+            vm.category = 'Select a Category';
         }
     }
 })();
