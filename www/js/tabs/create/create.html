@@ -1,5 +1,6 @@
-<ion-view title="Create Activity" hide-nav-bar="true" id="page11">
+<ion-view title="Create Activity" hide-nav-bar="true" id="createPage">
     <ion-content class="manual-ios-statusbar-padding">
+    <div class="card">
         <div class="defaultHeader">
             <label class="deafultHeaderTitle">WHiiM</label>
             <button class="messagesHeaderBtn button icon ion-chatboxes"></button>
@@ -9,33 +10,55 @@
             <h1 id="create-event-header" class="row">Create a New Event</h1>
             <p class="row">What do you feel like doing?</p>
         </div>
-
-        <div class="row">
-          <label class="col item item-input">
-            <input type="text" placeholder="Event Name" maxlength="50" ng-model="create.newEvent.name">
-          </label>
-        </div>
-        <div id="create-event-text" class="row">
-          <label class="col item item-input">
-            <textarea placeholder="Description" maxlength="200" ng-model="create.newEvent.description"></textarea>
-          </label>
-        </div>
-        
-        
-        <!-- buttons -->
+    </div>
+    <div class="card">
+        <form>
+            <!-- Where user inputs event name -->
             <div class="row">
-                <div class="col">
-                    <button class="button button-block select-num-btn" ng-click="profile.save()"><i class="ion-person-stalker"> # of people</i></button>
-                </div>
-                <div class="col">
-                    <button class="button button-block create-activity-btn" ng-click="popover.show()"> Category</button>
-                </div>
+                <label class="create-label">Event Name:</label>
             </div>
+            <div class="row">
+                <input id="create-event-name" class="row createInput" type="text" placeholder="" maxlength="50" ng-model="newEvent.name">
+            </div>
+
+            <!-- Where user inputs Description -->
+            <div class="row">
+                <label class="create-label">Description:</label>
+            </div>
+            <div class="row">
+                <input id="create-event-description" class="row createInput" type="text" placeholder="" maxlength="200" ng-model="newEvent.description">
+            </div>
+            
+            
+            <!-- Where user inputs # of people they want to join -->
+      
+                <div class="row">
+                    <label class="create-label">How many people would you like to join you?</label>
+                </div>
+                <div class="row">
+                    <div class="row item range">
+                        <i class="icon ion-ios-person"></i>
+                            <input id="a" type="range" value="0" min="1" max="20" step="1" ng-model="newEvent.requiredUsers"/>
+                        <output id="volume"></output>
+                        <i class="icon ion-ios-people"></i>
+                    </div>
+                </div>
+            
+
+                <div class="row">
+                    <label class="creat-label">What type of activity is this?</label>
+                </div>
+                <div class="row">
+                    <button class="button" ng-click="popover.show($event)" ng-model="newEvent.category">??</button>
+                </div>
+
+
+          
+      
             <div class="row">
                 <button class="button button-block post-event-btn" ng-click="create.createEvent(create.newEvent)">Post Event <i class="cust-icon ion-paper-airplane"></i></button>
             </div>
-        
-    
         </form>
+        </div> <!-- closing card div -->
     </ion-content>
 </ion-view>
