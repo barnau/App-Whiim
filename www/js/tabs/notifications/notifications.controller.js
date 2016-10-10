@@ -58,25 +58,10 @@
            updates['groups/users/' + newGroupKey + '/' + requestingUserId  ] = { name: requestingUserName};
            updates['groups/users/' + newGroupKey + '/' + acceptingUserId  ] = {name: acceptingUserName};
 
-<<<<<<< HEAD
-        var ref = firebase.database().ref('/notifications/' + uid);
-        $scope.notifications = $firebaseArray(ref);
-        
-        FirebaseFactory.returnUserFromDB(uid).then(function(user) {
-                vm.user = user;
-                console.log(vm.user);
-                
-        })
 
-        $ionicPopover.fromTemplateUrl('js/tabs/notifications/notifications.popover.html', {
-             scope: $scope,
-        }).then(function(popover) {
-             $scope.popover = popover;
-        });
 
-        activate();
-=======
->>>>>>> addChats
+       
+
 
            updates['users/' + requestingUserId + '/groups/' + newGroupKey ] = { title: title, key: newGroupKey };
            updates['users/' + acceptingUserId + '/groups/' + newGroupKey ] = { title: title, key: newGroupKey };
