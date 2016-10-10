@@ -134,7 +134,10 @@
                 .then(function(result) {
                     
                     $sessionStorage.uid = result.user.uid;
-                    console.log('right befor eemit');
+                    $sessionStorage.displayName = result.user.displayName;
+                    // $sessionStorage.user = angular.copy(result.user);
+
+                    
                     $rootScope.$emit('userLoggedIn', {uid: result.user.uid});
 
                     console.log( $sessionStorage.uid);

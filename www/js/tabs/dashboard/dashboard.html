@@ -9,7 +9,7 @@
         
         <div>
             <td-cards>
-              <td-card class="swipeCard list card" ng-repeat="card in dashboard.currentCard" on-destroy="dashboard.cardDestroyed($index)" on-swipe-right="dashboard.cardSwiped($index)">
+              <td-card class="swipeCard list card" ng-repeat="card in dashboard.currentCard" on-destroy="dashboard.cardDestroyed(card)" on-swipe-right="dashboard.cardSwiped(card)">
                 <td-card id="activityListCard" class="list card">
                   <p>"Activity Will Go Here Okay"<label id="activityListCard-People">3<i id="activityListCard-PeopleIcon" class="icon ion-person-stalker"></i></label></p>
                 </td-card>
