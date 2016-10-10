@@ -117,6 +117,7 @@
                          console.log(notifications);
                         
                     })
+
                    
             });
 
@@ -138,8 +139,8 @@
                 if (window.StatusBar) {
                     StatusBar.styleDefault();
                 }
-            });
-        });
+            })
+        })
 
 
 

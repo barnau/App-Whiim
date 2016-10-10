@@ -1,19 +1,24 @@
-<ion-view title="Notifications" hide-nav-bar="true" id="notifications">
-    <ion-content padding="true" class="manual-ios-statusbar-padding">
-        <h1 id="notifications-heading4" style="color:#000000;text-align:center;">NOTIFICATIONS</h1>
-        <ion-list ng-repeat="note in notifs.notifications" id="notifications-list7">
-            <ion-item class="item-avatar item-icon-right" id="notifications-list-item13">
-                <h2>{{note.displayName}} wants to join!</h2>
 
-                <i class="icon ion-android-cancel"></i>
-            </ion-item>
-           <div class="button-bar">
-            <a class="button button-balanced" ng-click="notifs.add(note)">Add to Chat List</a>
-            <a class="button button-royal" ng-click="notifs.remove($index)">Not now...</a>
-           </div>
-            
-        </ion-list>
-        
+<ion-view title="Notifications" hide-nav-bar="true" id="notificationsPage">
+        <!-- <ion-list ng-repeat="note in notifications" id="notifications-list7">
+           
+        </ion-list> -->
+        <ion-content class="manual-ios-statusbar-padding">
+        <div class="defaultHeader">
+            <label class="deafultHeaderTitle">WHiiM</label>
+            <button class="messagesHeaderBtn button icon ion-ios-email"></button>
+        </div>
+        <td-cards>
+        	<td-card ng-repeat="note in notifs.notifications" class="notificationCard list card">
+	            <ion-item class="item-avatar item-icon-right" id="notifications-list-item13">
+	                <div class="rows">
+					<!-- <img class="profile-photo" ng-src="{{notifs.user.photoURL}}" width="100%" 							height="auto" style="display: block; margin-left: auto; margin-right: 						auto;" ng-click="popover.show($event)"> -->
+		                <p ng-click="popover.show($event)"><label class="notificationCard-userName">{{note.displayName}}</label> wants to join!</p>
+		                <i id="declineCardIcon" class="col-20 icon ion-close-circled" ng-click="notifs.remove($index)"></i>
+		                <i id="acceptCardIcon" class="col-20 icon ion-checkmark-circled" ng-click="notifs.add(note)"></i>
+		            </div>
+	            </ion-item>
+	        </td-card>
+        </td-cards>
     </ion-content>
-</ion-view>
 </ion-view>
