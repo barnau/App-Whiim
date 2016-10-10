@@ -117,7 +117,7 @@
                          console.log(notifications);
                         
                     })
-
+                })
             // }, 20000)
 
             
@@ -161,8 +161,8 @@
                 if (window.StatusBar) {
                     StatusBar.styleDefault();
                 }
-            });
-        });
+            })
+        })
 
 
 
