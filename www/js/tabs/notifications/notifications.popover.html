@@ -1,0 +1,17 @@
+<ion-popover-view id="notificationsPopover">
+    <ion-content>
+      <td-cards>
+        <td-card class="notifications-userCard list card">
+<!--           <td-card class="notifications-userCard list card"> -->
+            <img ng-src="{{notifs.user.photoURL}}" class="notifications-userCard-img">   
+<!--           </td-card> -->
+          <td-card id="notificationsUser-InfoCard" class="notifications-userCard list card">
+            <p id="notifications-userCardP1">{{notifs.user.displayName}}, <label id="notifications-userCardAge">AGE</label></p>
+          </td-card>
+          <td-card id="notificationsUser-InfoCard2" class="notifications-userCard list card">
+            <p>I am here to make new friends, party hard, find a bad bitch, get rich, and fuck shit up.</p>
+          </td-card>
+        </td-card>
+      </td-cards>
+    </ion-content>
+</ion-popover-view>

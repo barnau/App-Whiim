@@ -53,6 +53,7 @@
 
 .deafultHeaderTitle {
     text-align: center;
+    padding-left: 14%;
     color: #fff;
     font-size: 2.4em;
     font-family: 'Raleway', sans-serif;
@@ -172,6 +173,7 @@ ion-popover-view .list {
     padding-left: 1%;
 }
 
+
 #activityListCard2 {
     padding-left: 2%;
     padding-right: 1%;
@@ -256,6 +258,94 @@ ion-popover-view .list {
     font-size: 2em;
 }
 
+/***************************************************
+                Notification Html
+***************************************************/
+#notificationsPage {
+    background-color: #EFEFEF;
+}
 
+#acceptCardIcon {
+    margin-right: 11%;
+    color: #4caf50;
+}
 
+#declineCardIcon {
+    color: #ff3b3f;
+}
 
+.notificationCard {
+    box-shadow: 0 3px 6px #ccc;
+    margin-bottom: 0;
+    margin-top: 1%;
+    transform: none !important;
+    transition: none !important;
+}
+
+.notificationCard p {
+    margin-top: 2%;
+    text-align: center;
+}
+
+.notificationCard-userName {
+    font-weight: bold;
+}
+
+#notificationsPopover {
+    position: absolute;
+    top: 15% !important;
+    left: 0 !important;
+    right: 5%;
+    z-index: 10;
+    margin-top: 0;
+    margin-left: 3% !important;
+    margin-bottom: 4%;
+    /* background-color: #000; */
+    height: 70%;
+    width: 94%;
+    background-color: #fff;
+}
+
+#notificationsPopover .popover-arrow {
+    display:none !important;
+}
+
+.popover-backdrop.active {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.notifications-userCard {
+    transform: none !important;
+    transition: none !important;
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    box-shadow: 0px 2px 4px #ccc;
+}
+
+.notifications-userCard-img {
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    height: auto;
+}
+
+#notifications-userCardP1 {
+    padding-top: 2%;
+    text-align: left;
+    font-size: 1.5em;
+}
+
+#notifications-userCardAge {
+    font-weight: bold;
+}
+
+#notificationsUser-InfoCard,
+#notificationsUser-InfoCard2 {
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 2%;
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    box-shadow: 0px 2px 4px #ccc;
+}

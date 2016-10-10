@@ -8,8 +8,6 @@
         <button id="activityFeedBtn" class="button" ng-click="popover.show($event)" >{{user.activity}}</button>
         
         <div>
-
-            
             <td-cards>
               <td-card class="swipeCard list card" ng-repeat="card in dashboard.currentCard" on-destroy="dashboard.cardDestroyed($index)" on-swipe-right="dashboard.cardSwiped($index)">
                 <td-card id="activityListCard" class="list card">
@@ -21,14 +19,7 @@
                 </td-card>
               </td-card>
             </td-cards>
-            
-            
-          
-        </div>
-      
-
-            
-            
+        </div>     
     </ion-content>
 </ion-view>
 
