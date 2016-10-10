@@ -82,19 +82,19 @@
                     $scope.num = notifications.length
             });
 
-            setTimeout(function() {
-                alert('time out works')
-                notificationsRef.on('child_added', function(data) {
-                   console.log('below data from child added');
-                    $scope.notifications.$loaded().then(function(notifications) {
-                        $scope.num = notifications.length;
-                         console.log(notifications);
-                        toastr.success('New notification from');
-                    })
+            // setTimeout(function() {
+            //     alert('time out works')
+            //     notificationsRef.on('child_added', function(data) {
+            //        console.log('below data from child added');
+            //         $scope.notifications.$loaded().then(function(notifications) {
+            //             $scope.num = notifications.length;
+            //              console.log(notifications);
+            //             toastr.success('New notification from');
+            //         })
                    
-            });
+            // });
 
-            }, 20000)
+            // }, 20000)
 
             
 

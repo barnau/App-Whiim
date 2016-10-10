@@ -238,21 +238,31 @@ ion-popover-view .list {
 ***************************************************/
 
 #createPage{
-    background-color: #DFF3F7;
+    background-color: #EFEFEF;
 }
 
-#create-event-text {
-    margin-top: 2%; 
-    height: 8em;
+#create-event-name {
+    border: 1px solid #ccc;
+    margin-top: 1%;
+}
+
+#create-event-description {
+    margin-top: 1%;
+    height: 5em;
+    border: 1px solid #ccc;
 }
 
 .createInput{
-    box-shadow: 0px 2px 4px #96D7E5;
+
+}
+
+output{
+    display: inline;
 }
 
 .create-label {
-    color: v;
-    text-shadow: 0px 2px 4px;
+    font-family: raleway;
+    margin-top: 2%;
 }
 .cust-icon {
     font-size: 2em;

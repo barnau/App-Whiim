@@ -20,23 +20,21 @@
         vm.uid = $sessionStorage.uid; 
 
 
-        
-
         function createEvent(newEvent) {
             if (newEvent.name == null || newEvent.description == null){
-                toastr.error("Please provide both a name & description for this event!");
+                toastr.error('Please enter a name and description!');
             } else {
+
+            console.log(newEvent);
             var postEvent = {
                 creator: vm.uid,  
                 name: newEvent.name, 
                 description: newEvent.description, 
-                requiredUsers : vm.requiredUsers, 
+                requiredUsers : newEvent.requiredUsers, 
                 category : vm.category,
                 timeStamp: Date.now()
                 };
-            console.log(newEvent);
-            toastr.success("New Event Posted!");
-            }
+            
 
             // Get a key for a new event
             var newEventKey = firebase.database().ref().child('events').push().key;
@@ -45,9 +43,14 @@
             var eventUpdates = {};
             eventUpdates['/events/' + newEventKey] = postEvent;
             eventUpdates['/users/' + vm.uid + '/user-events/' + newEventKey] = postEvent;
+                
+                toastr.success('Your event has been posted!');
 
             return firebase.database().ref().update(eventUpdates);
+                }
         }
+
+       
 
 
 
