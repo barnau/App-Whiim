@@ -25,7 +25,6 @@
 
 
          function remove(i) {
-            alert('remove');
             vm.notifications.$loaded().then(
                 function(notifications) {
                     notifications.$remove(i);
@@ -34,7 +33,7 @@
         }
 
 
-        function add(note) {
+        function add(note, index) {
             var requestingUserName = note.displayName;
             var requestingUserId = note.$id;
             var acceptingUserName = $sessionStorage.displayName;
@@ -69,6 +68,7 @@
            firebase.database().ref().update(updates).then(
                 function() {
                     toastr.success("You can now chat with " + requestingUserName + ".");
+                    remove(index);
                 },
                 function() {
                     toastr.error("There was a problem adding this info to our database.")

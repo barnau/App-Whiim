@@ -52,7 +52,6 @@
         }
 
 
-
         //if user profile exists outside of auth in user table return
         function userProfileExists(uid) {
 
@@ -150,7 +149,7 @@
                                 displayName: result.user.displayName,
                                 email: result.user.email,
                                 photoURL: result.user.photoURL,
-                                activity: 'Select an activity'
+                                category: 'Select an activity'
 
                             });
                             result = 'Created new user';

@@ -16,7 +16,7 @@
 		                <p class="col-80"><a ng-click="popover.show($event); setRequestingId(note.$id)" class="notificationCard-userName">{{note.displayName}}</a> wants to join!</p>
 		                <div id="notificationCard-icons">
 			                <i id="declineCardIcon" class="col-10 icon ion-close-circled" ng-click="notifs.remove($index)"></i>
-			                <i id="acceptCardIcon" class="col-10 icon ion-checkmark-circled" ng-click="notifs.add(note)"></i>
+			                <i id="acceptCardIcon" class="col-10 icon ion-checkmark-circled" ng-click="notifs.add(note, $index)"></i>
 			            </div>
 		            </div>
 	            </ion-item>
