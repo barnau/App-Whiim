@@ -61,9 +61,7 @@
          });
 
          $scope.setCategory = function(category) {
-            
-            
-            alert('test');
+            toastr.success('Category Set');
             $scope.newEvent.category = category;
             console.log($scope.newEvent.category);
          };
