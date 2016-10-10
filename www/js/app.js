@@ -117,33 +117,11 @@
                          console.log(notifications);
                         
                     })
-                })
-            // }, 20000)
 
-            
-
-            // $rootScope.$on('userLoggedIn', function(event, args) {
-            //     console.log(args.uid);
-
-               
-            //     $scope.notifications.$loaded().then(function(notifications) {
-            //         $scope.num = notifications.length
-            //     })
-                
-                
-
-            //  })
-
-            // var notificationsRef = firebase.database().ref('notifications/' + $sessionStorage.uid);
-            // notificationsRef.on('child_added', function(data) {
-            //        console.log('below data from child added');
-            //         $scope.notifications.$loaded().then(function(notifications) {
-            //             $scope.num = notifications.length;
-            //              console.log(notifications);
-            //             toastr.success('New notification from '  )
-            //         })
                    
-            // });
+            });
+
+        
         })
         
         .run(function appRun($ionicPlatform) {
