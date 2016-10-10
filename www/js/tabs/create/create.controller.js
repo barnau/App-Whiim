@@ -67,6 +67,7 @@
             $scope.newEvent.category = category;
             console.log($scope.newEvent.category);
          };
+
       
 
        
