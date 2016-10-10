@@ -21,54 +21,81 @@
                     controller: 'DefaultLoginController as login'
                 })
 
-            .state('tabs', {
-                url: '/tabs',
-                templateUrl: 'js/tabs/tabs.html',
-                abstract: true,
-                controller: 'TabsController'
+                // .state('chat', {
+                //     url: '/chat',
+                //     templateUrl: 'js/tabs/chat/chat.html',
+                //     controller: 'ChatController as chat'
+                // })
 
-            })
 
-            .state('tabs.dashboard', {
-                url: '/dashboard',
-                views: {
-                    'dashboard': {
-                        templateUrl: 'js/tabs/dashboard/dashboard.html',
-                        controller: 'DashboardController as dashboard'
+
+                .state('tabs', {
+                    url: '/tabs',
+                    templateUrl: 'js/tabs/tabs.html',
+                    abstract: true,
+                    controller: 'TabsController'
+
+                })
+
+                .state('tabs.chatrooms', {
+                    url: '/chatrooms',
+                    views: {
+                        'chatrooms': {
+                            templateUrl: 'js/tabs/chat/groups.html',
+                            controller: 'ChatController as chat'
+                        }
                     }
-                }
-            })
+                })
 
-
-            .state('tabs.create', {
-                url: '/create',
-                views: {
-                    'create': {
-                        templateUrl: 'js/tabs/create/create.html',
-                        controller: 'CreateController as create'
+                .state('tabs.chat', {
+                    url: '/chat',
+                    views: {
+                        'chatrooms': {
+                            templateUrl: 'js/tabs/chat/chat.html',
+                            controller: 'ChatController as chat'
+                        }
                     }
-                }
-            })
+                })
 
-
-            .state('tabs.profile', {
-                url: '/profile',
-                views: {
-                    'profile': {
-                        templateUrl: 'js/tabs/profile/profile.html',
-                        controller: 'ProfileController as profile'
+                .state('tabs.dashboard', {
+                    url: '/dashboard',
+                    views: {
+                        'dashboard': {
+                            templateUrl: 'js/tabs/dashboard/dashboard.html',
+                            controller: 'DashboardController as dashboard'
+                        }
                     }
-                }
-            })
+                })
 
-            .state('tabs.notifications', {
-                url: '/notifications',
-                views: {
-                    'notifications': {
-                        templateUrl: 'js/tabs/notifications/notifications.html',
-                        controller: 'NotificationsController as notifs'
+                .state('tabs.create', {
+                    url: '/create',
+                    views: {
+                        'create': {
+                            templateUrl: 'js/tabs/create/create.html',
+                            controller: 'CreateController as create'
+                        }
                     }
-                }
+                })
+
+
+                .state('tabs.profile', {
+                    url: '/profile',
+                    views: {
+                        'profile': {
+                            templateUrl: 'js/tabs/profile/profile.html',
+                            controller: 'ProfileController as profile'
+                        }
+                    }
+                })
+
+                .state('tabs.notifications', {
+                    url: '/notifications',
+                    views: {
+                        'notifications': {
+                            templateUrl: 'js/tabs/notifications/notifications.html',
+                            controller: 'NotificationsController as notifs'
+                        }
+                    }
             });
 
         })
@@ -82,44 +109,18 @@
                     $scope.num = notifications.length
             });
 
-            setTimeout(function() {
-                alert('time out works')
+            
                 notificationsRef.on('child_added', function(data) {
                    console.log('below data from child added');
                     $scope.notifications.$loaded().then(function(notifications) {
                         $scope.num = notifications.length;
                          console.log(notifications);
-                        toastr.success('New notification from');
+                        
                     })
                    
             });
 
-            }, 20000)
-
-            
-
-            // $rootScope.$on('userLoggedIn', function(event, args) {
-            //     console.log(args.uid);
-
-               
-            //     $scope.notifications.$loaded().then(function(notifications) {
-            //         $scope.num = notifications.length
-            //     })
-                
-                
-
-            //  })
-
-            // var notificationsRef = firebase.database().ref('notifications/' + $sessionStorage.uid);
-            // notificationsRef.on('child_added', function(data) {
-            //        console.log('below data from child added');
-            //         $scope.notifications.$loaded().then(function(notifications) {
-            //             $scope.num = notifications.length;
-            //              console.log(notifications);
-            //             toastr.success('New notification from '  )
-            //         })
-                   
-            // });
+        
         })
         
         .run(function appRun($ionicPlatform) {
