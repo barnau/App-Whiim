@@ -33,13 +33,15 @@
             <!-- Where user inputs # of people they want to join -->
       
                 <div class="row">
-                    <label class="create-label">How many people would you like to join you?</label>
+                    <label class="col-70 create-label">How many people would you like to join you?
+                        <output class="col-30 ppl-output">{{newEvent.requiredUsers}}</output>
+                    </label>
+                    
                 </div>
                 <div class="row">
                     <div class="row item range">
                         <i class="icon ion-ios-person"></i>
                             <input type="range" value="0" min="1" max="10" step="1" ng-model="newEvent.requiredUsers"/>
-                        <output>{{newEvent.requiredUsers}}</output>
                         <i class="icon ion-ios-people"></i>
                     </div>
                 </div>
