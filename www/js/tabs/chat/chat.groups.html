@@ -1,0 +1,20 @@
+<ion-view title="Create Activity" id="page11">
+    <ion-content class="manual-ios-statusbar-padding">
+    	 <div class="defaultHeader">
+            <label class="deafultHeaderTitle">WHiiM</label>
+            <button class="messagesHeaderBtn button icon ion-ios-chatboxes"></button>
+        </div>
+        <h1>Groups {{chat.title}}</h1>
+
+        <div class="list card" ng-repeat="c in chatCtrl.chatrooms">
+		<a ng-click="modal.show()" class="item item-icon-left">
+		    <i class="icon ion-ios-chatboxes"></i>
+		    {{c.title}}
+		  </a>
+		</div>
+		<pre>{{ wholeGroupRepresentation | json}} </pre>
+
+
+
+    </ion-content>
+</ion-view>
