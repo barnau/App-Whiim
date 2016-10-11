@@ -41,21 +41,21 @@
                     url: '/chatrooms',
                     views: {
                         'chatrooms': {
-                            templateUrl: 'js/tabs/chat/groups.html',
-                            controller: 'ChatController as chat'
+                            templateUrl: 'js/tabs/chat/chat.groups.html',
+                            controller: 'ChatController as chatCtrl'
                         }
                     }
                 })
 
-                .state('tabs.chat', {
-                    url: '/chat',
-                    views: {
-                        'chatrooms': {
-                            templateUrl: 'js/tabs/chat/chat.html',
-                            controller: 'ChatController as chat'
-                        }
-                    }
-                })
+                // .state('tabs.chat', {
+                //     url: '/chat',
+                //     views: {
+                //         'chatrooms': {
+                //             templateUrl: 'js/tabs/chat/chat.feed.html',
+                //             controller: 'ChatController as chatCtrl'
+                //         }
+                //     }
+                // })
 
                 .state('tabs.dashboard', {
                     url: '/dashboard',
